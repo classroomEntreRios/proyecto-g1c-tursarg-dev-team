@@ -19,6 +19,7 @@ import { UsuariosService } from './services/usuarios.service';
 import { FormsModule} from '@angular/forms';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { PasswordValidationDirective } from './validations/password-validation.directive';
+import { UsernameUnicoDirective } from './validations/username-unico.directive';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PasswordValidationDirective } from './validations/password-validation.d
     AtraccionesComponent,
     UsuariosComponent,
     PasswordValidationDirective,
+    UsernameUnicoDirective,
 
   ],
   imports: [

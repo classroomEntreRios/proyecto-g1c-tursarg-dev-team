@@ -1,6 +1,8 @@
 import { Usuarios } from './../models/usuarios.model';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 
 
 @Injectable({
@@ -19,6 +21,9 @@ export class UsuariosService {
 
     return this.http.post(this.rootURL + '/USUARIOS1', formData);
   }
-
+////// verificar si exite el usuario /////
+  VerificarUsuario():Observable<string[]>{
+  return this.http.get<string[]>('https://localhost:44332/api/USUARIOS1');
+}
 
 }

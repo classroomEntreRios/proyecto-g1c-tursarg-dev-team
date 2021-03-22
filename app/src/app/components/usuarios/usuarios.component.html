@@ -8,89 +8,113 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
+<!-- Aca llamamos al componente del navbar -->
+
+<app-navbar></app-navbar>
 
 <body>
-    <H3>Registro de Usuario</H3>
-    <div id="registroUsuario">
-        <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
 
+    <div id="registroUsuario" class="container-fluid">
 
-            <input name="idUsuario" #idUsuario="ngModel" [(ngModel)]="service.formData.idUsuario" type="hidden">
-            <input name="rolAdmin" #rolAdmin="ngModel" [(ngModel)]="service.formData.rolAdmin" type="hidden">
+        <div class="row no-gutter">
+            <div class="col-md-6">
+                <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+                    <H3>Registro de Usuario</H3>
 
-            <div class="form-group">
-                <label for="exampleInputNombreUsuario"> Nombre de Usuario:</label>
-                <input name="nombreUsuario" #nombreUsuario="ngModel" [(ngModel)]="service.formData.nombreUsuario" required maxlength="50" minlength="6" type="text" class="form-control col-md-7" style="border: 1px solid black;">
-                <!--Validacion requiere nombre de usurario el minimo 6 caracteres-->
-                <div class="text-danger" *ngIf="nombreUsuario.invalid && (nombreUsuario.dirty || nombreUsuario.touched)">
-                    <div *ngIf="nombreUsuario.errors.required" class="col-md-7">
-                        Nombre de usuario es requerido
+                    <input name="idUsuario" #idUsuario="ngModel" [(ngModel)]="service.formData.idUsuario" type="hidden">
+                    <input name="rolAdmin" #rolAdmin="ngModel" [(ngModel)]="service.formData.rolAdmin" type="hidden">
+
+                    <div class="form-group">
+                        <label for="exampleInputNombreUsuario"> Nombre de Usuario:</label>
+                        <input name="nombreUsuario" #nombreUsuario="ngModel" [(ngModel)]="service.formData.nombreUsuario" required maxlength="50" minlength="6" type="text" usernameUnico [ngModelOptions]="{updateOn:'blur'}" class="form-control col-md-4" style="border: 1px solid black;">
+                        <!--Validacion requiere nombre de usurario el minimo 6 caracteres-->
+                        <div class="text-danger" *ngIf="nombreUsuario.invalid && (nombreUsuario.dirty || nombreUsuario.touched)">
+                            <div *ngIf="nombreUsuario.errors.required" class="col-md-4 ">
+                                Nombre de usuario es requerido
+                            </div>
+                            <div *ngIf="nombreUsuario.errors.minlength" class="col-md-4 ">
+                                Nombre de usuario debe contener al menos 6 caracteres
+                            </div>
+                            <div *ngIf="nombreUsuario.errors.usernameUnico" class="col-md-4 ">
+                                Usuario ya existe
+                            </div>
+                        </div>
+                        <!--/////////////////////////////////////////-->
                     </div>
-                    <div *ngIf="nombreUsuario.errors.minlength" class="col-md-7">
-                        Nombre de usuario debe contener al menos 6 caracteres
-                    </div>
-                </div>
-                <!--/////////////////////////////////////////-->
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword">Contraseña:</label>
-                <input name="contrasenia" #contrasenia="ngModel" [(ngModel)]="service.formData.contrasenia" required minlength="8" passwordValidation type="text" class="form-control col-md-7" style="border: 1px solid black;">
-                <!--Validacion requiere contraseña el minimo 6 caracteres-->
-                <div class="text-danger" *ngIf="contrasenia.invalid && (contrasenia.dirty || contrasenia.touched)">
-                    <div *ngIf="contrasenia.errors.required" class="col-md-7">
-                        contraseña es requerida
-                    </div>
-                    <div *ngIf="contrasenia.errors.minlength" class="col-md-7">
-                        Nombre de usuario debe contener al menos 8 caracteres
-                    </div>
-                    <div *ngIf="contrasenia.errors.passwordValidation" class="col-md-7">
-                        {{contrasenia.errors.passwordValidation.message}}
-                    </div>
-                </div>
-                <!--/////////////////////////////////////////-->
+                    <div class="form-group">
+                        <label for="exampleInputPassword">Contraseña:</label>
+                        <input name="contrasenia" #contrasenia="ngModel" [(ngModel)]="service.formData.contrasenia" required minlength="8" passwordValidation type="password" class="form-control col-md-4" style="border: 1px solid black;">
+                        <!--Validacion requiere contraseña el minimo 6 caracteres-->
+                        <div class="text-danger" *ngIf="contrasenia.invalid && (contrasenia.dirty || contrasenia.touched)">
+                            <div *ngIf="contrasenia.errors.required" class="col-md-4 ">
+                                contraseña es requerida
+                            </div>
+                            <div *ngIf="contrasenia.errors.minlength" class="col-md-4 ">
+                                La contraseña debe contener al menos 8 caracteres
+                            </div>
+                            <div *ngIf="contrasenia.errors.passwordValidation" class="col-md-4 ">
+                                {{contrasenia.errors.passwordValidation.message}}
+                            </div>
+                        </div>
+                        <!--/////////////////////////////////////////-->
 
-            </div>
-            <div class="form-group">
-                <label for="exampleInputEmail">E-mail:</label>
-                <input name="mail" #mail="ngModel" type="email" [(ngModel)]="service.formData.mail" ngModel required class="form-control col-md-7" style="border: 1px solid black;">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputNombre">Nombre:</label>
-                <input name="nombre" #nombre="ngModel" type="text" [(ngModel)]="service.formData.nombre" class="form-control col-md-7" style="border: 1px solid black;">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputApellido">Apellido:</label>
-                <input name="apellido" #apellido="ngModel" type="text" [(ngModel)]="service.formData.apellido" class="form-control col-md-7" style="border: 1px solid black;">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputTelefono">Telefono:</label>
-                <input name="telefono" #telefono="ngModel" [(ngModel)]="service.formData.telefono" type="text" class="form-control col-md-7" style="border: 1px solid black;">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputUrlfoto">Foto de Perfil:</label>
-                <input name="urlFotoUsuario" #urlFotoUsuario="ngModel" [(ngModel)]="service.formData.urlFotoUsuario" type="text" class="form-control col-md-7" style="border: 1px solid black;">
-            </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail">E-mail:</label>
+                        <input name="mail" #mail="ngModel" type="email" [(ngModel)]="service.formData.mail" email required class="form-control col-md-5" style="border: 1px solid black;">
+                        <div class="text-danger" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
+                            <div *ngIf="mail.errors.required" class="col-md-4 ">
+                                El E-mail es requerido
+                            </div>
+                            <div *ngIf="mail.errors.email" class="col-md-5 invalid-feedback">
+                                El correo electrónico no es válido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputNombre">Nombre:</label>
+                        <input name="nombre" #nombre="ngModel" type="text" [(ngModel)]="service.formData.nombre" class="form-control col-md-4" style="border: 1px solid black;">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputApellido">Apellido:</label>
+                        <input name="apellido" #apellido="ngModel" type="text" [(ngModel)]="service.formData.apellido" class="form-control col-md-4" style="border: 1px solid black;">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputTelefono">Telefono:</label>
+                        <input name="telefono" #telefono="ngModel" [(ngModel)]="service.formData.telefono" type="text" class="form-control col-md-4" style="border: 1px solid black;">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputUrlfoto">Foto de Perfil:</label>
+                        <input name="urlFotoUsuario" #urlFotoUsuario="ngModel" [(ngModel)]="service.formData.urlFotoUsuario" type="text" class="form-control col-md-4" style="border: 1px solid black;">
+                    </div>
 
 
-            <!--<div class="form-group">
+                    <!--<div class="form-group">
             <label for="exampleInputPassword1">rolAdmin</label>
             <input name="rolAdmin" #rolAdmin="ngModel" [(ngModel)]="service.formData.rolAdmin" type="text"
                 class="form-control" id="exampleInputPassword1">
         </div> -->
 
-
-
-            <div class="form-group">
-                <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block col-md-2 " style="border: 1px solid black; background-color: cadetblue;">Registrarse</button>
+                    <br>
+                    <div class="form-group">
+                        <button style="background-color: rgb(159, 215, 252); color: black; font-weight: 600;" class="btn btn-lg btn-primary btn-block btn-login  mb-2 pb-2" type="submit" [disabled]="form.invalid">Registrarse</button>
+                    </div>
+                    <div class="form-group">
+                        <button style="background-color: rgb(159, 215, 252); color: black; font-weight: 600;" class="btn btn-lg btn-primary btn-block btn-login  mb-2 pb-2" routerLink='/index'>Volver</button>
+                    </div>
+                    <br>
+                </form>
             </div>
-        </form>
-
-
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
 
 </body>
+<!-- Aca llamamos al componente del footer -->
+
+<app-footer></app-footer>
 
 
 </html>

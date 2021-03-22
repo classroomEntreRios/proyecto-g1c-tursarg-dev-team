@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -8,6 +9,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Windows;
 using TursArg.Models;
 
 namespace TursArg.Controllers
@@ -22,6 +24,8 @@ namespace TursArg.Controllers
             return db.USUARIOS;
         }
 
+
+       
         // GET: api/USUARIOS1/5
         [ResponseType(typeof(USUARIOS))]
         public IHttpActionResult GetUSUARIOS(int id)
@@ -81,12 +85,26 @@ namespace TursArg.Controllers
             // Encripta contraseña
             var Encript = uSUARIOS.contrasenia;
             uSUARIOS.contrasenia = Encriptacion.Encriptacion.GetSHA256(Encript);
-            
-            db.USUARIOS.Add(uSUARIOS);
-            db.SaveChanges();
+            ///// verificar nombreusuario///
 
-            return CreatedAtRoute("DefaultApi", new { id = uSUARIOS.idUsuario }, uSUARIOS);
+           
+
+           
+            
+                db.USUARIOS.Add(uSUARIOS);
+                db.SaveChanges();
+
+                return CreatedAtRoute("DefaultApi", new { id = uSUARIOS.idUsuario }, uSUARIOS);
+
+            
+            
+
+
+
+
         }
+                  
+       
 
         // DELETE: api/USUARIOS1/5
         [ResponseType(typeof(USUARIOS))]
@@ -118,4 +136,6 @@ namespace TursArg.Controllers
             return db.USUARIOS.Count(e => e.idUsuario == id) > 0;
         }
     }
-}
+   
+ }
+
