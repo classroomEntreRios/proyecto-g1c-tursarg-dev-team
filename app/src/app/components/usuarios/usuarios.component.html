@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registro Usuario TursArg</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 <!-- Aca llamamos al componente del navbar -->
@@ -28,7 +28,7 @@
                         <label for="exampleInputNombreUsuario"> Nombre de Usuario:</label>
                         <input name="nombreUsuario" #nombreUsuario="ngModel" [(ngModel)]="service.formData.nombreUsuario" required maxlength="50" minlength="6" type="text" usernameUnico [ngModelOptions]="{updateOn:'blur'}" class="form-control col-md-4" style="border: 1px solid black;">
                         <!--Validacion requiere nombre de usurario el minimo 6 caracteres-->
-                        <div class="text-danger" *ngIf="nombreUsuario.invalid && (nombreUsuario.dirty || nombreUsuario.touched)">
+                        <div class="alert alert-danger" *ngIf="nombreUsuario.invalid && (nombreUsuario.dirty || nombreUsuario.touched)">
                             <div *ngIf="nombreUsuario.errors.required" class="col-md-4 ">
                                 Nombre de usuario es requerido
                             </div>
@@ -45,7 +45,7 @@
                         <label for="exampleInputPassword">Contraseña:</label>
                         <input name="contrasenia" #contrasenia="ngModel" [(ngModel)]="service.formData.contrasenia" required minlength="8" passwordValidation type="password" class="form-control col-md-4" style="border: 1px solid black;">
                         <!--Validacion requiere contraseña el minimo 6 caracteres-->
-                        <div class="text-danger" *ngIf="contrasenia.invalid && (contrasenia.dirty || contrasenia.touched)">
+                        <div class="alert alert-danger" *ngIf="contrasenia.invalid && (contrasenia.dirty || contrasenia.touched)">
                             <div *ngIf="contrasenia.errors.required" class="col-md-4 ">
                                 contraseña es requerida
                             </div>
@@ -61,13 +61,16 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail">E-mail:</label>
-                        <input name="mail" #mail="ngModel" type="email" [(ngModel)]="service.formData.mail" email required class="form-control col-md-5" style="border: 1px solid black;">
-                        <div class="text-danger" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
+                        <input name="mail" #mail="ngModel" type="Email" [(ngModel)]="service.formData.mail" required Email EmailUnico [ngModelOptions]="{updateOn:'blur'}" class="form-control col-md-5" style="border: 1px solid black;">
+                        <div class="alert alert-danger" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
                             <div *ngIf="mail.errors.required" class="col-md-4 ">
                                 El E-mail es requerido
                             </div>
-                            <div *ngIf="mail.errors.email" class="col-md-5 invalid-feedback">
-                                El correo electrónico no es válido.
+                            <div *ngIf="mail.errors.EmailUnico" class="col-md-4">
+                                El correo electrónico ya existe en nuestra base
+                            </div>
+                            <div *ngIf="mail.errors?.Email" class="col-md-4">
+                                El E-mail es invalido "example@gmail.com"
                             </div>
                         </div>
                     </div>
@@ -81,8 +84,12 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputTelefono">Telefono:</label>
-                        <input name="telefono" #telefono="ngModel" [(ngModel)]="service.formData.telefono" type="text" class="form-control col-md-4" style="border: 1px solid black;">
+                        <input name="telefono" #telefono="ngModel" [(ngModel)]="service.formData.telefono" type="number" class="form-control col-md-4" style="border: 1px solid black;">
+                        <!-- <div *ngIf="telefono.errors?.number" class="col-md-4 alert alert-danger">
+                            para el telefono solo se aceptan numeros
+                        </div>-->
                     </div>
+
                     <div class="form-group">
                         <label for="exampleInputUrlfoto">Foto de Perfil:</label>
                         <input name="urlFotoUsuario" #urlFotoUsuario="ngModel" [(ngModel)]="service.formData.urlFotoUsuario" type="text" class="form-control col-md-4" style="border: 1px solid black;">

@@ -23,9 +23,38 @@ namespace TursArg.Controllers
         {
             return db.USUARIOS;
         }
+        // GET: api/USUARIOS1/5
+        [ResponseType(typeof(USUARIOS))]
+        public IHttpActionResult GetUSer(string user)
+        {
+           
+            var uSUARIOS = from c in db.USUARIOS
+                           where (c.nombreUsuario==(user))
+                           select c;
+            if (uSUARIOS == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(uSUARIOS);
+        }
+        // GET: api/USUARIOS1/5
+        [ResponseType(typeof(USUARIOS))]
+        public IHttpActionResult GetEmail(string email)
+        {
+
+            var uSUARIOS = from c in db.USUARIOS
+                           where (c.mail == (email))
+                           select c;
+            if (uSUARIOS == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(uSUARIOS);
+        }
 
 
-       
         // GET: api/USUARIOS1/5
         [ResponseType(typeof(USUARIOS))]
         public IHttpActionResult GetUSUARIOS(int id)
@@ -47,7 +76,7 @@ namespace TursArg.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+                
             if (id != uSUARIOS.idUsuario)
             {
                 return BadRequest();

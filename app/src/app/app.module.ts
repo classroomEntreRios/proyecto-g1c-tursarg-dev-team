@@ -20,6 +20,10 @@ import { FormsModule} from '@angular/forms';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { PasswordValidationDirective } from './validations/password-validation.directive';
 import { UsernameUnicoDirective } from './validations/username-unico.directive';
+import { EmailUnicoDirective } from './validations/email-unico.directive';
+import { EmailValidatorDirective } from './validations/email-validator.directive';
+
+
 
 @NgModule({
   declarations: [
@@ -37,7 +41,9 @@ import { UsernameUnicoDirective } from './validations/username-unico.directive';
     UsuariosComponent,
     PasswordValidationDirective,
     UsernameUnicoDirective,
-
+    EmailUnicoDirective,
+    EmailValidatorDirective,
+    
   ],
   imports: [
     BrowserModule,

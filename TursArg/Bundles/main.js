@@ -90,8 +90,12 @@ class UsuariosService {
         return this.http.post(this.rootURL + '/USUARIOS1', formData);
     }
     ////// verificar si exite el usuario /////
-    VerificarUsuario() {
-        return this.http.get('https://localhost:44332/api/USUARIOS1');
+    VerificarUsuario(nombreUsuario) {
+        return this.http.get(this.rootURL + '/USUARIOS1?user=' + nombreUsuario);
+    }
+    ////// verificar si exite el Email /////
+    VerificarEmail(email) {
+        return this.http.get(this.rootURL + '/USUARIOS1?email=' + email);
     }
 }
 UsuariosService.ɵfac = function UsuariosService_Factory(t) { return new (t || UsuariosService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
@@ -237,6 +241,44 @@ ForoComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "foro works!");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJmb3JvLmNvbXBvbmVudC5jc3MifQ== */"] });
+
+
+/***/ }),
+
+/***/ "NO5Y":
+/*!******************************************************!*\
+  !*** ./src/app/validations/email-unico.directive.ts ***!
+  \******************************************************/
+/*! exports provided: EmailUnicoDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmailUnicoDirective", function() { return EmailUnicoDirective; });
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _services_usuarios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/usuarios.service */ "ESM5");
+
+
+
+
+class EmailUnicoDirective {
+    constructor(UsuariosService) {
+        this.UsuariosService = UsuariosService;
+    }
+    validate(control) {
+        const email = control.value;
+        return this.UsuariosService.VerificarEmail(email).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["map"])(emailArr => {
+            if (emailArr.length > 0) {
+                return { EmailUnico: true };
+            }
+            return null;
+        }));
+    }
+}
+EmailUnicoDirective.ɵfac = function EmailUnicoDirective_Factory(t) { return new (t || EmailUnicoDirective)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_services_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuariosService"])); };
+EmailUnicoDirective.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineDirective"]({ type: EmailUnicoDirective, selectors: [["", "EmailUnico", ""]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵProvidersFeature"]([{ provide: _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NG_ASYNC_VALIDATORS"], useExisting: EmailUnicoDirective, multi: true }])] });
 
 
 /***/ }),
@@ -710,6 +752,34 @@ LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
 
 /***/ }),
 
+/***/ "WgvS":
+/*!**********************************************************!*\
+  !*** ./src/app/validations/email-validator.directive.ts ***!
+  \**********************************************************/
+/*! exports provided: EmailValidatorDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmailValidatorDirective", function() { return EmailValidatorDirective; });
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+class EmailValidatorDirective {
+    constructor() { }
+    validate(control) {
+        let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        let valid = emailRegex.test(control.value);
+        return control.value < 1 || valid ? null : { "Email": true };
+    }
+}
+EmailValidatorDirective.ɵfac = function EmailValidatorDirective_Factory(t) { return new (t || EmailValidatorDirective)(); };
+EmailValidatorDirective.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineDirective"]({ type: EmailValidatorDirective, selectors: [["", "Email", ""]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵProvidersFeature"]([{ provide: _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NG_VALIDATORS"], useExisting: EmailValidatorDirective, multi: true }])] });
+
+
+/***/ }),
+
 /***/ "XC3f":
 /*!***********************************************************!*\
   !*** ./src/app/components/register/register.component.ts ***!
@@ -766,7 +836,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_usuarios_usuarios_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/usuarios/usuarios.component */ "oqZO");
 /* harmony import */ var _validations_password_validation_directive__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./validations/password-validation.directive */ "P5vZ");
 /* harmony import */ var _validations_username_unico_directive__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./validations/username-unico.directive */ "tCcz");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _validations_email_unico_directive__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./validations/email-unico.directive */ "NO5Y");
+/* harmony import */ var _validations_email_validator_directive__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./validations/email-validator.directive */ "WgvS");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
 
 
 
@@ -789,14 +863,14 @@ __webpack_require__.r(__webpack_exports__);
 
 class AppModule {
 }
-AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]] });
-AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [_services_usuarios_service__WEBPACK_IMPORTED_MODULE_14__["UsuariosService"]], imports: [[
+AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_21__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]] });
+AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_21__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [_services_usuarios_service__WEBPACK_IMPORTED_MODULE_14__["UsuariosService"]], imports: [[
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_15__["FormsModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_21__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
         _components_login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"],
         _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_5__["NavbarComponent"],
         _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_6__["FooterComponent"],
@@ -809,7 +883,9 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵdefineInjecto
         _components_atracciones_atracciones_component__WEBPACK_IMPORTED_MODULE_13__["AtraccionesComponent"],
         _components_usuarios_usuarios_component__WEBPACK_IMPORTED_MODULE_16__["UsuariosComponent"],
         _validations_password_validation_directive__WEBPACK_IMPORTED_MODULE_17__["PasswordValidationDirective"],
-        _validations_username_unico_directive__WEBPACK_IMPORTED_MODULE_18__["UsernameUnicoDirective"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+        _validations_username_unico_directive__WEBPACK_IMPORTED_MODULE_18__["UsernameUnicoDirective"],
+        _validations_email_unico_directive__WEBPACK_IMPORTED_MODULE_19__["EmailUnicoDirective"],
+        _validations_email_validator_directive__WEBPACK_IMPORTED_MODULE_20__["EmailValidatorDirective"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_15__["FormsModule"],
         _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"]] }); })();
@@ -919,8 +995,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _validations_username_unico_directive__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../validations/username-unico.directive */ "tCcz");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "ofXK");
 /* harmony import */ var _validations_password_validation_directive__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../validations/password-validation.directive */ "P5vZ");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "tyNb");
-/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../footer/footer.component */ "LmEr");
+/* harmony import */ var _validations_email_validator_directive__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../validations/email-validator.directive */ "WgvS");
+/* harmony import */ var _validations_email_unico_directive__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../validations/email-unico.directive */ "NO5Y");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../footer/footer.component */ "LmEr");
+
+
 
 
 
@@ -1003,14 +1083,20 @@ function UsuariosComponent_div_38_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function UsuariosComponent_div_38_div_2_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 44);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " El correo electr\u00F3nico no es v\u00E1lido. ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " El correo electr\u00F3nico ya existe en nuestra base ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function UsuariosComponent_div_38_div_3_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " El E-mail es invalido \"example@gmail.com\" ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function UsuariosComponent_div_38_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, UsuariosComponent_div_38_div_1_Template, 2, 0, "div", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, UsuariosComponent_div_38_div_2_Template, 2, 0, "div", 43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, UsuariosComponent_div_38_div_3_Template, 2, 0, "div", 43);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
@@ -1018,7 +1104,9 @@ function UsuariosComponent_div_38_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _r7.errors.required);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _r7.errors.email);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _r7.errors.EmailUnico);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _r7.errors == null ? null : _r7.errors.Email);
 } }
 const _c0 = function () { return { updateOn: "blur" }; };
 class UsuariosComponent {
@@ -1056,15 +1144,15 @@ class UsuariosComponent {
     }
 }
 UsuariosComponent.ɵfac = function UsuariosComponent_Factory(t) { return new (t || UsuariosComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_usuarios_service__WEBPACK_IMPORTED_MODULE_1__["UsuariosService"])); };
-UsuariosComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: UsuariosComponent, selectors: [["app-usuarios"]], decls: 69, vars: 15, consts: [["lang", "en"], ["charset", "UTF-8"], ["http-equiv", "X-UA-Compatible", "content", "IE=edge"], ["name", "viewport", "content", "width=device-width, initial-scale=1.0"], ["href", "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css", "rel", "stylesheet", "integrity", "sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl", "crossorigin", "anonymous"], ["id", "registroUsuario", 1, "container-fluid"], [1, "row", "no-gutter"], [1, "col-md-6"], ["autocomplete", "off", 3, "submit"], ["form", "ngForm"], ["name", "idUsuario", "type", "hidden", 3, "ngModel", "ngModelChange"], ["idUsuario", "ngModel"], ["name", "rolAdmin", "type", "hidden", 3, "ngModel", "ngModelChange"], ["rolAdmin", "ngModel"], [1, "form-group"], ["for", "exampleInputNombreUsuario"], ["name", "nombreUsuario", "required", "", "maxlength", "50", "minlength", "6", "type", "text", "usernameUnico", "", 1, "form-control", "col-md-4", 2, "border", "1px solid black", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["nombreUsuario", "ngModel"], ["class", "text-danger", 4, "ngIf"], ["for", "exampleInputPassword"], ["name", "contrasenia", "required", "", "minlength", "8", "passwordValidation", "", "type", "password", 1, "form-control", "col-md-4", 2, "border", "1px solid black", 3, "ngModel", "ngModelChange"], ["contrasenia", "ngModel"], ["for", "exampleInputEmail"], ["name", "mail", "type", "email", "email", "", "required", "", 1, "form-control", "col-md-5", 2, "border", "1px solid black", 3, "ngModel", "ngModelChange"], ["mail", "ngModel"], ["for", "exampleInputNombre"], ["name", "nombre", "type", "text", 1, "form-control", "col-md-4", 2, "border", "1px solid black", 3, "ngModel", "ngModelChange"], ["nombre", "ngModel"], ["for", "exampleInputApellido"], ["name", "apellido", "type", "text", 1, "form-control", "col-md-4", 2, "border", "1px solid black", 3, "ngModel", "ngModelChange"], ["apellido", "ngModel"], ["for", "exampleInputTelefono"], ["name", "telefono", "type", "text", 1, "form-control", "col-md-4", 2, "border", "1px solid black", 3, "ngModel", "ngModelChange"], ["telefono", "ngModel"], ["for", "exampleInputUrlfoto"], ["name", "urlFotoUsuario", "type", "text", 1, "form-control", "col-md-4", 2, "border", "1px solid black", 3, "ngModel", "ngModelChange"], ["urlFotoUsuario", "ngModel"], ["type", "submit", 1, "btn", "btn-lg", "btn-primary", "btn-block", "btn-login", "mb-2", "pb-2", 2, "background-color", "rgb(159, 215, 252)", "color", "black", "font-weight", "600", 3, "disabled"], ["routerLink", "/index", 1, "btn", "btn-lg", "btn-primary", "btn-block", "btn-login", "mb-2", "pb-2", 2, "background-color", "rgb(159, 215, 252)", "color", "black", "font-weight", "600"], [1, "d-none", "d-md-flex", "col-md-4", "col-lg-6", "bg-image"], [1, "text-danger"], ["class", "col-md-4 ", 4, "ngIf"], [1, "col-md-4"], ["class", "col-md-5 invalid-feedback", 4, "ngIf"], [1, "col-md-5", "invalid-feedback"]], template: function UsuariosComponent_Template(rf, ctx) { if (rf & 1) {
-        const _r21 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+UsuariosComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: UsuariosComponent, selectors: [["app-usuarios"]], decls: 69, vars: 17, consts: [["lang", "en"], ["charset", "UTF-8"], ["http-equiv", "X-UA-Compatible", "content", "IE=edge"], ["name", "viewport", "content", "width=device-width, initial-scale=1.0"], ["href", "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css", "rel", "stylesheet", "integrity", "sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl", "crossorigin", "anonymous"], ["id", "registroUsuario", 1, "container-fluid"], [1, "row", "no-gutter"], [1, "col-md-6"], ["autocomplete", "off", 3, "submit"], ["form", "ngForm"], ["name", "idUsuario", "type", "hidden", 3, "ngModel", "ngModelChange"], ["idUsuario", "ngModel"], ["name", "rolAdmin", "type", "hidden", 3, "ngModel", "ngModelChange"], ["rolAdmin", "ngModel"], [1, "form-group"], ["for", "exampleInputNombreUsuario"], ["name", "nombreUsuario", "required", "", "maxlength", "50", "minlength", "6", "type", "text", "usernameUnico", "", 1, "form-control", "col-md-4", 2, "border", "1px solid black", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["nombreUsuario", "ngModel"], ["class", "alert alert-danger", 4, "ngIf"], ["for", "exampleInputPassword"], ["name", "contrasenia", "required", "", "minlength", "8", "passwordValidation", "", "type", "password", 1, "form-control", "col-md-4", 2, "border", "1px solid black", 3, "ngModel", "ngModelChange"], ["contrasenia", "ngModel"], ["for", "exampleInputEmail"], ["name", "mail", "type", "Email", "required", "", "Email", "", "EmailUnico", "", 1, "form-control", "col-md-5", 2, "border", "1px solid black", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["mail", "ngModel"], ["for", "exampleInputNombre"], ["name", "nombre", "type", "text", 1, "form-control", "col-md-4", 2, "border", "1px solid black", 3, "ngModel", "ngModelChange"], ["nombre", "ngModel"], ["for", "exampleInputApellido"], ["name", "apellido", "type", "text", 1, "form-control", "col-md-4", 2, "border", "1px solid black", 3, "ngModel", "ngModelChange"], ["apellido", "ngModel"], ["for", "exampleInputTelefono"], ["name", "telefono", "type", "number", 1, "form-control", "col-md-4", 2, "border", "1px solid black", 3, "ngModel", "ngModelChange"], ["telefono", "ngModel"], ["for", "exampleInputUrlfoto"], ["name", "urlFotoUsuario", "type", "text", 1, "form-control", "col-md-4", 2, "border", "1px solid black", 3, "ngModel", "ngModelChange"], ["urlFotoUsuario", "ngModel"], ["type", "submit", 1, "btn", "btn-lg", "btn-primary", "btn-block", "btn-login", "mb-2", "pb-2", 2, "background-color", "rgb(159, 215, 252)", "color", "black", "font-weight", "600", 3, "disabled"], ["routerLink", "/index", 1, "btn", "btn-lg", "btn-primary", "btn-block", "btn-login", "mb-2", "pb-2", 2, "background-color", "rgb(159, 215, 252)", "color", "black", "font-weight", "600"], [1, "d-none", "d-md-flex", "col-md-4", "col-lg-6", "bg-image"], [1, "alert", "alert-danger"], ["class", "col-md-4 ", 4, "ngIf"], [1, "col-md-4"], ["class", "col-md-4", 4, "ngIf"]], template: function UsuariosComponent_Template(rf, ctx) { if (rf & 1) {
+        const _r22 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "html", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "head");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "meta", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "meta", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "meta", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "title");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Document");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Registro Usuario TursArg");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "link", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -1074,7 +1162,7 @@ UsuariosComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 7);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "form", 8, 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function UsuariosComponent_Template_form_submit_13_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r21); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](14); return ctx.onSubmit(_r0); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function UsuariosComponent_Template_form_submit_13_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r22); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](14); return ctx.onSubmit(_r0); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "H3");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Registro de Usuario");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -1109,7 +1197,7 @@ UsuariosComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "input", 23, 24);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function UsuariosComponent_Template_input_ngModelChange_36_listener($event) { return ctx.service.formData.mail = $event; });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](38, UsuariosComponent_div_38_Template, 3, 2, "div", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](38, UsuariosComponent_div_38_Template, 4, 3, "div", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 14);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "label", 25);
@@ -1173,7 +1261,7 @@ UsuariosComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.service.formData.rolAdmin);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.service.formData.nombreUsuario)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](14, _c0));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.service.formData.nombreUsuario)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](15, _c0));
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _r3.invalid && (_r3.dirty || _r3.touched));
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
@@ -1181,7 +1269,7 @@ UsuariosComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _r5.invalid && (_r5.dirty || _r5.touched));
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.service.formData.mail);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.service.formData.mail)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](16, _c0));
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _r7.invalid && (_r7.dirty || _r7.touched));
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
@@ -1194,7 +1282,7 @@ UsuariosComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.service.formData.urlFotoUsuario);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", _r0.invalid);
-    } }, directives: [_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_2__["NavbarComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MinLengthValidator"], _validations_username_unico_directive__WEBPACK_IMPORTED_MODULE_4__["UsernameUnicoDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _validations_password_validation_directive__WEBPACK_IMPORTED_MODULE_6__["PasswordValidationDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["EmailValidator"], _angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterLink"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_8__["FooterComponent"]], styles: ["h3[_ngcontent-%COMP%] {\r\n    padding: 20px;\r\n}\r\n\r\n\r\n\r\n\r\n\r\n#registroUsuario[_ngcontent-%COMP%] {\r\n    padding-left: 20px;\r\n}\r\n\r\n\r\n.bg-image[_ngcontent-%COMP%] {\r\n    background-image: url(\"https://i.ibb.co/FwwGDTJ/VIVI-ARGENTINA-ENTRE-RIOS-EL-PALMAR.jpg\");\r\n    background-size: cover;\r\n    background-position: center;\r\n    border-right: 1px solid black;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVzdWFyaW9zLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxhQUFhO0FBQ2pCOzs7QUFHQTs7O0VBR0U7OztBQUVGO0lBQ0ksa0JBQWtCO0FBQ3RCOzs7QUFFQTtJQUNJLHlGQUF5RjtJQUN6RixzQkFBc0I7SUFDdEIsMkJBQTJCO0lBQzNCLDZCQUE2QjtBQUNqQyIsImZpbGUiOiJ1c3Vhcmlvcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaDMge1xyXG4gICAgcGFkZGluZzogMjBweDtcclxufVxyXG5cclxuXHJcbi8qZm9ybSB7XHJcbiAgICBtYXJnaW4tbGVmdDogYXV0byAhaW1wb3J0YW50O1xyXG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvICFpbXBvcnRhbnQ7XHJcbn0qL1xyXG5cclxuI3JlZ2lzdHJvVXN1YXJpbyB7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDIwcHg7XHJcbn1cclxuXHJcbi5iZy1pbWFnZSB7XHJcbiAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCJodHRwczovL2kuaWJiLmNvL0Z3d0dEVEovVklWSS1BUkdFTlRJTkEtRU5UUkUtUklPUy1FTC1QQUxNQVIuanBnXCIpO1xyXG4gICAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcclxuICAgIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcclxuICAgIGJvcmRlci1yaWdodDogMXB4IHNvbGlkIGJsYWNrO1xyXG59Il19 */"] });
+    } }, directives: [_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_2__["NavbarComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MinLengthValidator"], _validations_username_unico_directive__WEBPACK_IMPORTED_MODULE_4__["UsernameUnicoDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _validations_password_validation_directive__WEBPACK_IMPORTED_MODULE_6__["PasswordValidationDirective"], _validations_email_validator_directive__WEBPACK_IMPORTED_MODULE_7__["EmailValidatorDirective"], _validations_email_unico_directive__WEBPACK_IMPORTED_MODULE_8__["EmailUnicoDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"], _angular_router__WEBPACK_IMPORTED_MODULE_9__["RouterLink"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_10__["FooterComponent"]], styles: ["h3[_ngcontent-%COMP%] {\r\n    padding: 20px;\r\n}\r\n\r\n\r\n\r\n\r\n\r\n#registroUsuario[_ngcontent-%COMP%] {\r\n    padding-left: 20px;\r\n}\r\n\r\n\r\n.bg-image[_ngcontent-%COMP%] {\r\n    background-image: url(\"https://i.ibb.co/FwwGDTJ/VIVI-ARGENTINA-ENTRE-RIOS-EL-PALMAR.jpg\");\r\n    background-size: cover;\r\n    background-position: center;\r\n    border-right: 1px solid black;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVzdWFyaW9zLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxhQUFhO0FBQ2pCOzs7QUFHQTs7O0VBR0U7OztBQUVGO0lBQ0ksa0JBQWtCO0FBQ3RCOzs7QUFFQTtJQUNJLHlGQUF5RjtJQUN6RixzQkFBc0I7SUFDdEIsMkJBQTJCO0lBQzNCLDZCQUE2QjtBQUNqQyIsImZpbGUiOiJ1c3Vhcmlvcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaDMge1xyXG4gICAgcGFkZGluZzogMjBweDtcclxufVxyXG5cclxuXHJcbi8qZm9ybSB7XHJcbiAgICBtYXJnaW4tbGVmdDogYXV0byAhaW1wb3J0YW50O1xyXG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvICFpbXBvcnRhbnQ7XHJcbn0qL1xyXG5cclxuI3JlZ2lzdHJvVXN1YXJpbyB7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDIwcHg7XHJcbn1cclxuXHJcbi5iZy1pbWFnZSB7XHJcbiAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCJodHRwczovL2kuaWJiLmNvL0Z3d0dEVEovVklWSS1BUkdFTlRJTkEtRU5UUkUtUklPUy1FTC1QQUxNQVIuanBnXCIpO1xyXG4gICAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcclxuICAgIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcclxuICAgIGJvcmRlci1yaWdodDogMXB4IHNvbGlkIGJsYWNrO1xyXG59Il19 */"] });
 
 
 /***/ }),
@@ -1223,8 +1311,8 @@ class UsernameUnicoDirective {
     }
     validate(control) {
         const nombreUsuario = control.value;
-        return this.UsuariosService.VerificarUsuario().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(usernameArr => {
-            if (usernameArr.indexOf(nombreUsuario) !== -1) {
+        return this.UsuariosService.VerificarUsuario(nombreUsuario).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(usernameArr => {
+            if (usernameArr.length > 0) {
                 return { usernameUnico: true };
             }
             return null;
