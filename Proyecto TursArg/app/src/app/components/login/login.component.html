@@ -31,30 +31,32 @@
                         <div class="row">
                             <div class="col-md-9 col-lg-8 mx-auto pt-2 pb-0">
                                 <h3 class="login-heading mb-4">Inicia Sesion</h3>
-                                <form #form="ngForm" (submit)="onSubmit(form)" [formGroup]="form" class="">
+                                <form [formGroup]="ingresoForm">
                                     <div class="form-label-group">
                                         <h5>Email</h5>
-                                        <input type="email" style="padding-left: 1rem;" type="email" id="inputEmail"
-                                            class="form-control" required autofocus>
+                                        <input type="email" style="padding-left: 1rem;" type="email" id="emailLogin"
+                                            minlength="8" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                            class="form-control" formControlName="emailLogin">
 
                                         <label for="inputEmail"></label>
                                     </div>
 
                                     <div class="form-label-group">
                                         <h5>Contraseña</h5>
-                                        <input style="padding-left: 1rem;" type="password" id="inputPassword"
-                                            class="form-control" required>
+                                        <input style="padding-left: 1rem;" type="password" id="passwLogin" minlength="6"
+                                            class="form-control" formControlName="passwLogin" required
+                                            placeholder="Debe contener al menos 6 caracteres">
                                         <label for="inputPassword"></label>
                                     </div>
                                     <div class="text-right">
                                         <a href="">¿Olvidaste la contraseña?</a>
                                     </div>
-                                    <div class="custom-control custom-checkbox mb-3">
+                                    <!-- <div class="custom-control custom-checkbox mb-3">
                                         <input type="checkbox" class="custom-control-input" id="customCheck1">
                                         <label class="custom-control-label" for="customCheck1">Recuerda la
                                             contraseña</label>
-                                    </div>
-                                    <button style="font-weight: 700;"
+                                    </div> -->
+                                    <button (click)="ingreso(ingresoForm.value)" style="font-weight: 700;"
                                         class=" btn btn-lg btn-primary btn-block btn-login  mb-2 pb-2"
                                         type="submit">Iniciar Sesion</button>
                                     <div class="text-center py-2">
