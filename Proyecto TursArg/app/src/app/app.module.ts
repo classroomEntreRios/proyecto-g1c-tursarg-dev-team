@@ -16,9 +16,10 @@ import { CiudadesComponent } from './components/ciudades/ciudades.component';
 import { ItinerariosComponent } from './components/itinerarios/itinerarios.component';
 import { AtraccionesComponent } from './components/atracciones/atracciones.component';
 import { UsuariosService } from './services/usuarios.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,

@@ -11,8 +11,13 @@ nombreUsuario varchar(50),
 nombre varchar(50),
 apellido varchar(50),
 telefono bigint,
+<<<<<<< HEAD
+email varchar(100),
+contrasenia varchar(260),
+=======
 mail varchar(100),
 contrasenia varchar(50),
+>>>>>>> b2e3e16fe7d0e91e0ea46217598e9245144f7c9d
 rolAdmin bit,
 constraint pk_cu primary key(idUsuario),
 )

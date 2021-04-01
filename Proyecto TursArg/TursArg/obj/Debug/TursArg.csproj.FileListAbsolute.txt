@@ -79,7 +79,6 @@ C:\Users\Leandro\Desktop\repo TursArg\proyecto-g1c-tursarg-dev-team\Proyecto Tur
 C:\Users\Leandro\Desktop\repo TursArg\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\es\System.Web.WebPages.resources.dll
 C:\Users\Leandro\Desktop\repo TursArg\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Leandro\Desktop\repo TursArg\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\Leandro\Desktop\repo TursArg\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Debug\TursArg.csprojAssemblyReference.cache
 C:\Users\Leandro\Desktop\repo TursArg\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Debug\TursArg.csproj.CoreCompileInputs.cache
 C:\Users\Leandro\Desktop\repo TursArg\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Debug\TursArg.csproj.CopyComplete
 C:\Users\Leandro\Desktop\repo TursArg\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Debug\TursArg.dll
@@ -350,3 +349,4 @@ C:\Users\Acer\Desktop\Proyecto Turismo\proyecto-g1c-tursarg-dev-team\Proyecto Tu
 C:\Users\Acer\Desktop\Proyecto Turismo\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Debug\TursArg.dll
 C:\Users\Acer\Desktop\Proyecto Turismo\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Debug\TursArg.pdb
 C:\Users\Acer\Desktop\Proyecto Turismo\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Debug\TursArg.csprojAssemblyReference.cache
+C:\Users\Leandro\Desktop\repo TursArg\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Debug\TursArg.csprojAssemblyReference.cache

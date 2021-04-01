@@ -1,25 +1,22 @@
-import { Login } from './../models/login.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Usuarios } from './../models/usuarios.model';
+import { HttpClient } from '@angular/common/http';
+import { UrlService } from './url.service';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  formData: Login;
+  constructor(private url: UrlService, private http: HttpClient) { }
 
-  readonly rootURL = 'https://localhost:44332/api'
+  urlLogin: any;
 
-  constructor(private http: HttpClient) { }
-
-  public login(usuario: Login): Observable<any> {
-    return this.http.post(this.rootURL + 'api/USUARIOS1/5', usuario, httpOptions);
+  autenticarUsuario(datos: Usuarios) {
+    return this.http.post(this.url.urlLogin, datos);
   }
 
+  obtenerUsuario(email: string) {
+    return this.http.get(this.url.urlRegistro + '?email=' + email)
+  }
 }
