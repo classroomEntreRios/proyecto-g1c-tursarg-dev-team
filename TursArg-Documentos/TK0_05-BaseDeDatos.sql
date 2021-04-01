@@ -1,5 +1,7 @@
-create database BDTursArg
-use BDTursArg
+
+create BDTursArg
+use BDTursAgr
+
 
 -- tabla USUARIOS ACTOR
 create table USUARIOS(
@@ -9,8 +11,13 @@ nombreUsuario varchar(50),
 nombre varchar(50),
 apellido varchar(50),
 telefono bigint,
+<<<<<<< HEAD
 email varchar(100),
 contrasenia varchar(260),
+=======
+mail varchar(100),
+contrasenia varchar(50),
+>>>>>>> b2e3e16fe7d0e91e0ea46217598e9245144f7c9d
 rolAdmin bit,
 constraint pk_cu primary key(idUsuario),
 )
@@ -118,16 +125,16 @@ constraint fk_fcodp_hclim foreign key(codPostal_HistoClim) references CIUDADES (
 
 -- relacion de las tablas USUARIOS CIUDADES
 create table USUARIOS_CIUDADES(
-idUsuario_codPostal int,
-codPostal_idUsuario int,
+idUsuario_codPostal int NOT NULL,
+codPostal_idUsuario int NOT NULL,
 constraint fk_fUsuPos foreign key(idUsuario_codPostal) references USUARIOS(idUsuario),
 constraint fk_fPosUsu foreign key(codPostal_idUsuario) references CIUDADES (codPostal)
 )
 
 -- relacion de las tablas ITINERARIOS_ATRACCIONES
 create table ITINERARIOS_ATRACCIONES(
-idItinerario_idAtraccion int,
-idAtraccion_idItinerario int,
+idItinerario_idAtraccion int NOT NULL,
+idAtraccion_idItinerario int NOT NULL,
 constraint fk_fItiAtra foreign key(idItinerario_idAtraccion) references ITINERARIOS (idItinerario),
 constraint fk_fAtraIti foreign key(idAtraccion_idItinerario) references ATRACCIONES (idAtraccion)
 )

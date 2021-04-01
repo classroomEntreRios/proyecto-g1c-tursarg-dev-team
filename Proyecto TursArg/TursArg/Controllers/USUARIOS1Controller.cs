@@ -112,7 +112,6 @@ namespace TursArg.Controllers
 
             try
             {
-                // revisa si existe un usuario que coincida con los datos aportados como parametro
                 var usuarioRegistrado = db.USUARIOS.Where(a => a.email == val.email && a.contrasenia == val.contrasenia).ToList();
 
                 if (usuarioRegistrado.Count > 0)
