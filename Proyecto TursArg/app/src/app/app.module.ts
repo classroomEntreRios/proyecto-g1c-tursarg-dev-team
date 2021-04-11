@@ -19,6 +19,7 @@ import { UsuariosService } from './services/usuarios.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { WidgetClimaComponent } from './components/widget-clima/widget-clima.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ItinerariosComponent,
     AtraccionesComponent,
     UsuariosComponent,
+    WidgetClimaComponent,
 
   ],
   imports: [

@@ -38,4 +38,91 @@ header h1 {
 
 }
 
+.textWhite {
+  color: white;
+}
+
 /* Estilos login */
+
+/* Estilos para widget clima */
+
+#sizeTextDays {
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.imagenlogo {
+  height: 50px;
+  width: 50px;
+}
+
+#cardClima {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.description-w {
+  font-size: medium;
+  text-transform: uppercase;
+  color: rgb(127, 207, 253);
+  font-weight: 550;
+}
+
+#divWeatherMain {
+
+  border-radius: 10px;
+  width: 570px;
+  height: 305px;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgb(29, 42, 46) 0%, rgb(42, 17, 7) 75%, rgb(63, 14, 8) 100%);
+  color: white;
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.weatherWidgetRow {
+  padding-bottom: 0.5rem;
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+
+}
+
+.sun {
+  margin-top: 10px;
+  color: yellow;
+  filter: drop-shadow(1px 1px 10px yellow);
+}
+
+.moon {
+  margin-top: 10px;
+  color: white;
+  filter: drop-shadow(1px 1px 10px white);
+}
+
+.cloudDiv {
+  margin-top: -40px;
+}
+
+.cloud {
+  color: rgb(104, 175, 197);
+  filter: drop-shadow(1px 1px 5px rgb(104, 175, 197));
+  animation-name: cloudMovement;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+@keyframes cloudMovement {
+  from {
+    margin-left: -55px;
+  }
+
+  to {
+    margin-left: 65px;
+  }
+}
