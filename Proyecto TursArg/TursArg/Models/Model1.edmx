@@ -4,7 +4,21 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BDTursArgModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BDTursArgModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDTursArg.dbo.CIUDADES' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="CIUDADES">
+          <Key>
+            <PropertyRef Name="codPostal" />
+          </Key>
+          <Property Name="codPostal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcionCiudad" Type="varchar" MaxLength="100" />
+          <Property Name="nombreCiudad" Type="varchar" MaxLength="50" />
+          <Property Name="urlUbicacionCiudad" Type="varchar" MaxLength="150" />
+          <Property Name="urlfotoCiudad1" Type="varchar" MaxLength="150" />
+          <Property Name="urlfotoCiudad2" Type="varchar" MaxLength="150" />
+          <Property Name="urlfotoCiudad3" Type="varchar" MaxLength="150" />
+        </EntityType>
         <EntityType Name="USUARIOS">
           <Key>
             <PropertyRef Name="idUsuario" />
@@ -18,12 +32,23 @@
           <Property Name="email" Type="varchar" MaxLength="100" />
           <Property Name="contrasenia" Type="varchar" MaxLength="260" />
           <Property Name="rolAdmin" Type="bit" />
+          <Property Name="Token" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityContainer Name="BDTursArgModelStoreContainer">
           <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CIUDADES" EntityType="Self.CIUDADES" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CIUDADES].[codPostal] AS [codPostal], 
+    [CIUDADES].[descripcionCiudad] AS [descripcionCiudad], 
+    [CIUDADES].[nombreCiudad] AS [nombreCiudad], 
+    [CIUDADES].[urlUbicacionCiudad] AS [urlUbicacionCiudad], 
+    [CIUDADES].[urlfotoCiudad1] AS [urlfotoCiudad1], 
+    [CIUDADES].[urlfotoCiudad2] AS [urlfotoCiudad2], 
+    [CIUDADES].[urlfotoCiudad3] AS [urlfotoCiudad3]
+    FROM [dbo].[CIUDADES] AS [CIUDADES]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BDTursArgModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -40,10 +65,24 @@
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="contrasenia" Type="String" MaxLength="260" FixedLength="false" Unicode="false" />
           <Property Name="rolAdmin" Type="Boolean" />
+          <Property Name="Token" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="BDTursArgEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+          <EntitySet Name="CIUDADES" EntityType="BDTursArgModel.CIUDADES" />
         </EntityContainer>
+        <EntityType Name="CIUDADES">
+          <Key>
+            <PropertyRef Name="codPostal" />
+          </Key>
+          <Property Name="codPostal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcionCiudad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nombreCiudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="urlUbicacionCiudad" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="urlfotoCiudad1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="urlfotoCiudad2" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="urlfotoCiudad3" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -53,6 +92,7 @@
           <EntitySetMapping Name="USUARIOS">
             <EntityTypeMapping TypeName="BDTursArgModel.USUARIOS">
               <MappingFragment StoreEntitySet="USUARIOS">
+                <ScalarProperty Name="Token" ColumnName="Token" />
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="urlFotoUsuario" ColumnName="urlFotoUsuario" />
                 <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
@@ -62,6 +102,19 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
                 <ScalarProperty Name="rolAdmin" ColumnName="rolAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CIUDADES">
+            <EntityTypeMapping TypeName="BDTursArgModel.CIUDADES">
+              <MappingFragment StoreEntitySet="CIUDADES">
+                <ScalarProperty Name="urlfotoCiudad3" ColumnName="urlfotoCiudad3" />
+                <ScalarProperty Name="urlfotoCiudad2" ColumnName="urlfotoCiudad2" />
+                <ScalarProperty Name="urlfotoCiudad1" ColumnName="urlfotoCiudad1" />
+                <ScalarProperty Name="urlUbicacionCiudad" ColumnName="urlUbicacionCiudad" />
+                <ScalarProperty Name="nombreCiudad" ColumnName="nombreCiudad" />
+                <ScalarProperty Name="descripcionCiudad" ColumnName="descripcionCiudad" />
+                <ScalarProperty Name="codPostal" ColumnName="codPostal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
+  Perfil: string;
+  constructor(private cookieToken: CookieService, private router: Router) {
+    this.Perfil = this.cookieToken.get('Token');
+    console.log('perofiltoken', this.Perfil);
+  }
 
   ngOnInit(): void {
+  }
+
+  Cerrarsession() {
+    this.cookieToken.delete('Token')
+    this.router.navigate(['/index']);
+
+
   }
 
 }

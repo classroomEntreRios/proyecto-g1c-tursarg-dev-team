@@ -4,6 +4,7 @@
     <EntitySetMapping Name="USUARIOS">
       <EntityTypeMapping TypeName="BDTursArgModel.USUARIOS">
         <MappingFragment StoreEntitySet="USUARIOS">
+          <ScalarProperty Name="Token" ColumnName="Token" />
           <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
           <ScalarProperty Name="urlFotoUsuario" ColumnName="urlFotoUsuario" />
           <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
@@ -13,6 +14,19 @@
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
           <ScalarProperty Name="rolAdmin" ColumnName="rolAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CIUDADES">
+      <EntityTypeMapping TypeName="BDTursArgModel.CIUDADES">
+        <MappingFragment StoreEntitySet="CIUDADES">
+          <ScalarProperty Name="urlfotoCiudad3" ColumnName="urlfotoCiudad3" />
+          <ScalarProperty Name="urlfotoCiudad2" ColumnName="urlfotoCiudad2" />
+          <ScalarProperty Name="urlfotoCiudad1" ColumnName="urlfotoCiudad1" />
+          <ScalarProperty Name="urlUbicacionCiudad" ColumnName="urlUbicacionCiudad" />
+          <ScalarProperty Name="nombreCiudad" ColumnName="nombreCiudad" />
+          <ScalarProperty Name="descripcionCiudad" ColumnName="descripcionCiudad" />
+          <ScalarProperty Name="codPostal" ColumnName="codPostal" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

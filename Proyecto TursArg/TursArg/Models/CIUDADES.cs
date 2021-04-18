@@ -12,17 +12,14 @@ namespace TursArg.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class USUARIOS
+    public partial class CIUDADES
     {
-        public int idUsuario { get; set; }
-        public string urlFotoUsuario { get; set; }
-        public string nombreUsuario { get; set; }
-        public string nombre { get; set; }
-        public string apellido { get; set; }
-        public Nullable<long> telefono { get; set; }
-        public string email { get; set; }
-        public string contrasenia { get; set; }
-        public Nullable<bool> rolAdmin { get; set; }
-        public string Token { get; set; }
+        public int codPostal { get; set; }
+        public string descripcionCiudad { get; set; }
+        public string nombreCiudad { get; set; }
+        public string urlUbicacionCiudad { get; set; }
+        public string urlfotoCiudad1 { get; set; }
+        public string urlfotoCiudad2 { get; set; }
+        public string urlfotoCiudad3 { get; set; }
     }
 }

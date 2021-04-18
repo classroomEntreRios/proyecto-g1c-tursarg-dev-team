@@ -1,5 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BDTursArgModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDTursArg.dbo.CIUDADES' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CIUDADES">
+    <Key>
+      <PropertyRef Name="codPostal" />
+    </Key>
+    <Property Name="codPostal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcionCiudad" Type="varchar" MaxLength="100" />
+    <Property Name="nombreCiudad" Type="varchar" MaxLength="50" />
+    <Property Name="urlUbicacionCiudad" Type="varchar" MaxLength="150" />
+    <Property Name="urlfotoCiudad1" Type="varchar" MaxLength="150" />
+    <Property Name="urlfotoCiudad2" Type="varchar" MaxLength="150" />
+    <Property Name="urlfotoCiudad3" Type="varchar" MaxLength="150" />
+  </EntityType>
   <EntityType Name="USUARIOS">
     <Key>
       <PropertyRef Name="idUsuario" />
@@ -13,8 +27,20 @@
     <Property Name="email" Type="varchar" MaxLength="100" />
     <Property Name="contrasenia" Type="varchar" MaxLength="260" />
     <Property Name="rolAdmin" Type="bit" />
+    <Property Name="Token" Type="varchar" MaxLength="250" />
   </EntityType>
   <EntityContainer Name="BDTursArgModelStoreContainer">
     <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CIUDADES" EntityType="Self.CIUDADES" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CIUDADES].[codPostal] AS [codPostal], 
+    [CIUDADES].[descripcionCiudad] AS [descripcionCiudad], 
+    [CIUDADES].[nombreCiudad] AS [nombreCiudad], 
+    [CIUDADES].[urlUbicacionCiudad] AS [urlUbicacionCiudad], 
+    [CIUDADES].[urlfotoCiudad1] AS [urlfotoCiudad1], 
+    [CIUDADES].[urlfotoCiudad2] AS [urlfotoCiudad2], 
+    [CIUDADES].[urlfotoCiudad3] AS [urlfotoCiudad3]
+    FROM [dbo].[CIUDADES] AS [CIUDADES]</DefiningQuery>
+    </EntitySet>
   </EntityContainer>
 </Schema>
