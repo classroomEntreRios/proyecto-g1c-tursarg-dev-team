@@ -1,14 +1,12 @@
-import swal from 'sweetalert2';
-import { Usuarios } from './../../models/usuarios.model';
-
+import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import jwtDecode, * as JWT from 'jwt-decode';
-import { LoginService } from 'src/app/services/login.service';
-import { DatosService } from 'src/app/services/datos.service';
+import { FormControl, FormGroup, Validator, FormsModule, FormBuilder, Validators } from '@angular/forms';
+import { Login } from 'src/app/models/login.model';
+import swal from 'sweetalert2'
+import { CookieService } from 'ngx-cookie-service'
 
-
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -17,51 +15,53 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
+  token: string;
+  formLogin: FormGroup = this.formBuilder.group({
+    email: ['', [Validators.required]],
+    contrasenia: ['', [Validators.required]]
 
-  constructor(private login: LoginService, private router: Router, private datos: DatosService) { }
-
-
-  usuario: Usuarios = new Usuarios;
-  usuarioAutenticado = false;
-  respuesta: any;
-  datosU: any;
-
-  ngOnInit(): void {
-  }
-
-  ingresoForm = new FormGroup({
-    emailLogin: new FormControl(""),
-    passwLogin: new FormControl("")
   });
 
+  constructor(private LoginService: LoginService, private router: Router, public formBuilder: FormBuilder, private cookieToken: CookieService) { };
 
-  ingreso(form: FormGroup) {
-    // pasar los inputs del form al objeto usuario
-    this.usuario.email = this.ingresoForm.value.emailLogin;
-    this.usuario.contrasenia = this.ingresoForm.value.passwLogin;
 
-    this.login.autenticarUsuario(this.usuario).subscribe(resp => {
-      this.respuesta = resp;
-      if (this.respuesta.Resultado == 1) {
-        swal.fire('Bienvenido/a', 'Inicio de Sesion Exitoso', 'success');
-        this.login.obtenerUsuario(this.usuario.email.toString())
-          .subscribe(resp => {
-            this.datosU = resp;
-            this.datos.agregarDatos(this.datosU);
-            // this.router.navigate(['index']);
-            this.usuarioAutenticado = true;
-          })
-      }
-      // si el resultado es 0, emite alerta y redirige a la página de inicio
-      else {
-        swal.fire('Error', 'El email o contraseña no existen', 'error');
-        // this.router.navigate(['']);
-      }
-    }, err => {
-      console.log(err)
-      swal.fire('Error en el servidor', 'Ocurrió un error inesperado, por favor intente nuevamente más tarde', 'error');
-    })
+  ngOnInit() {
+
+  }
+  cerrarsession() {
+    this.cookieToken.delete('Token')
+    this.router.navigate(['/']);
+
   }
 
+  onSubmit() {
+    if (this.formLogin.invalid) {
+      this.formLogin.markAllAsTouched()
+    }
+    console.log('perraaaaa', this.formLogin)
+    return this.LoginService
+      .login(this.formLogin.value)
+      .subscribe(data => {
+        console.log('loginnnn', data);
+        if (data.Resultado == 1) {
 
+          /// guardo el Token en la Cookie ///
+          this.token = data.Datos
+          this.cookieToken.set('Token', this.token);
+          this.token = this.cookieToken.get('Token');
+          console.log('Tokenn', this.token)
+          swal.fire('Enhorabuena', 'Bienvenido', 'success');
+
+
+
+          this.router.navigate(['/']);
+        } else {
+          swal.fire('Error Login', 'Verifique Datos', 'error');
+
+        }
+      },
+
+      );
+  }
 }
+

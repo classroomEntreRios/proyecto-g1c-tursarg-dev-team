@@ -118,18 +118,27 @@ namespace TursArg.Controllers
                 {
                     oRespuesta.Resultado = 1;
                     oRespuesta.Mensaje = "Login correcto";
+
+                    ///// genera el Token ////
+                    oRespuesta.Datos = Guid.NewGuid().ToString();
+
+                    USUARIOS uSUARIOS = usuarioRegistrado.FirstOrDefault();
+                    uSUARIOS.Token = oRespuesta.Datos.ToString();
+                    ///graba la modifcacion(confirma) el Token///
+                    db.Entry(uSUARIOS).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
                 }
                 else
                 {
                     oRespuesta.Resultado = 0;
-                    oRespuesta.Mensaje = "Ocurrió un error, email o contraseña incorrecta";
+                    oRespuesta.Mensaje = "Ocurrió un error";
                 }
                 return oRespuesta;
             }
             catch (Exception ex)
             {
 
-                oRespuesta.Mensaje = "Ocurrió un error. Intente más tarde. Detalles del error:" + ex.Message;
+                oRespuesta.Mensaje = "Ocurrió un error. Intente más tarde." + ex.Message;
                 return oRespuesta;
             }
 

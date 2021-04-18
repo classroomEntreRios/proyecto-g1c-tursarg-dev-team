@@ -26,5 +26,6 @@ namespace TursArg.Models
         }
     
         public virtual DbSet<USUARIOS> USUARIOS { get; set; }
+        public virtual DbSet<CIUDADES> CIUDADES { get; set; }
     }
 }

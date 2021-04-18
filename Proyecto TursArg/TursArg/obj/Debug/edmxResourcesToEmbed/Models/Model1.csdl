@@ -13,8 +13,22 @@
     <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="contrasenia" Type="String" MaxLength="260" FixedLength="false" Unicode="false" />
     <Property Name="rolAdmin" Type="Boolean" />
+    <Property Name="Token" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityContainer Name="BDTursArgEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+    <EntitySet Name="CIUDADES" EntityType="BDTursArgModel.CIUDADES" />
   </EntityContainer>
+  <EntityType Name="CIUDADES">
+    <Key>
+      <PropertyRef Name="codPostal" />
+    </Key>
+    <Property Name="codPostal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcionCiudad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nombreCiudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="urlUbicacionCiudad" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="urlfotoCiudad1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="urlfotoCiudad2" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="urlfotoCiudad3" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

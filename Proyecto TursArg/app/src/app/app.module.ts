@@ -20,6 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WidgetClimaComponent } from './components/widget-clima/widget-clima.component';
+import { DashAdminComponent } from './components/dashboard-admin/dash-admin/dash-admin.component';
+import { ModificacionusuariosComponent } from './components/modificacionusuarios/modificacionusuarios.component';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { WidgetClimaComponent } from './components/widget-clima/widget-clima.com
     AtraccionesComponent,
     UsuariosComponent,
     WidgetClimaComponent,
+    DashAdminComponent,
+    ModificacionusuariosComponent,
 
   ],
   imports: [

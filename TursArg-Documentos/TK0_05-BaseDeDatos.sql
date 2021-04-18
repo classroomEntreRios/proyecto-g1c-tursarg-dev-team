@@ -67,15 +67,12 @@ constraint pk_cd primary key(idDepartamento)
 -- tabla CIUDADES
 create table CIUDADES(
 codPostal int NOT NULL IDENTITY (1,1),
-descripcionCiudad varchar(50),
+descripcionCiudad varchar(100),
 nombreCiudad varchar(50),
 urlUbicacionCiudad varchar(150),
 urlfotoCiudad1 varchar(150),
 urlfotoCiudad2 varchar(150),
-urlfotoCiudad3 varchar(150),
-idDepartamento_ciudad int,
-constraint pk_cpostal primary key(codPostal),
-constraint fk_fdpto_c foreign key(idDepartamento_ciudad) references DEPARTAMENTOS(idDepartamento)
+urlfotoCiudad3 varchar(150)
 )
 
 
