@@ -11,6 +11,7 @@ using System.Text;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TursArg.Models;
+using TursArg.Models.Respuesta;
 
 namespace TursArg.Controllers
 {
@@ -37,6 +38,37 @@ namespace TursArg.Controllers
             return Ok(uSUARIOS);
         }
 
+        // GET: api/USUARIOS1/5
+        [ResponseType(typeof(USUARIOS))]
+        public IHttpActionResult GetEmail(string email)
+        {
+
+            var uSUARIOS = from c in db.USUARIOS
+                           where (c.email == (email))
+                           select c;
+            if (uSUARIOS == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(uSUARIOS);
+        }
+        // GET: api/USUARIOS1/5
+        [ResponseType(typeof(USUARIOS))]
+        public IHttpActionResult GetUSUARIOS(string Token)
+        {
+
+            var uSUARIOS = db.USUARIOS.Where(a => a.Token == Token);
+
+
+            if (uSUARIOS == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(uSUARIOS);
+        }
+
         // PUT: api/USUARIOS1/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUSUARIOS(int id, USUARIOS uSUARIOS)
@@ -50,6 +82,7 @@ namespace TursArg.Controllers
             {
                 return BadRequest();
             }
+            
 
             db.Entry(uSUARIOS).State = EntityState.Modified;
 
@@ -107,7 +140,7 @@ namespace TursArg.Controllers
             Respuesta oRespuesta = new Respuesta();
 
             // encripta la passw ingresada por el usuario para revisar si coincide con la password encriptada anteriormente
-            string oValPass = Encrypt.GetSHA256(val.contrasenia);
+            string oValPass = Encriptacion.Encriptacion.GetSHA256(val.contrasenia);
             val.contrasenia = oValPass;
 
             try
@@ -178,23 +211,4 @@ namespace TursArg.Controllers
     }
 }
 
-public class Encrypt
-{
-    public static string GetSHA256(string str)
-    {
-        SHA256 sha256 = SHA256Managed.Create();
-        ASCIIEncoding encoding = new ASCIIEncoding();
-        byte[] stream = null;
-        StringBuilder sb = new StringBuilder();
-        stream = sha256.ComputeHash(encoding.GetBytes(str));
-        for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
-        return sb.ToString();
-    }
-}
 
-public class Respuesta
-{
-    public int Resultado { get; set; }
-    public object Datos { get; set; }
-    public string Mensaje { get; set; }
-}

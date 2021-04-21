@@ -2,9 +2,8 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="BDTursArgModelStoreContainer" CdmEntityContainer="BDTursArgEntities1">
     <EntitySetMapping Name="USUARIOS">
-      <EntityTypeMapping TypeName="BDTursArgModel.USUARIOS">
+      <EntityTypeMapping TypeName="IsTypeOf(BDTursArgModel.USUARIOS)">
         <MappingFragment StoreEntitySet="USUARIOS">
-          <ScalarProperty Name="Token" ColumnName="Token" />
           <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
           <ScalarProperty Name="urlFotoUsuario" ColumnName="urlFotoUsuario" />
           <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
@@ -14,19 +13,20 @@
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
           <ScalarProperty Name="rolAdmin" ColumnName="rolAdmin" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CIUDADES">
-      <EntityTypeMapping TypeName="BDTursArgModel.CIUDADES">
+      <EntityTypeMapping TypeName="IsTypeOf(BDTursArgModel.CIUDADES)">
         <MappingFragment StoreEntitySet="CIUDADES">
-          <ScalarProperty Name="urlfotoCiudad3" ColumnName="urlfotoCiudad3" />
-          <ScalarProperty Name="urlfotoCiudad2" ColumnName="urlfotoCiudad2" />
-          <ScalarProperty Name="urlfotoCiudad1" ColumnName="urlfotoCiudad1" />
-          <ScalarProperty Name="urlUbicacionCiudad" ColumnName="urlUbicacionCiudad" />
-          <ScalarProperty Name="nombreCiudad" ColumnName="nombreCiudad" />
-          <ScalarProperty Name="descripcionCiudad" ColumnName="descripcionCiudad" />
           <ScalarProperty Name="codPostal" ColumnName="codPostal" />
+          <ScalarProperty Name="descripcionCiudad" ColumnName="descripcionCiudad" />
+          <ScalarProperty Name="nombreCiudad" ColumnName="nombreCiudad" />
+          <ScalarProperty Name="urlUbicacionCiudad" ColumnName="urlUbicacionCiudad" />
+          <ScalarProperty Name="urlfotoCiudad1" ColumnName="urlfotoCiudad1" />
+          <ScalarProperty Name="urlfotoCiudad2" ColumnName="urlfotoCiudad2" />
+          <ScalarProperty Name="urlfotoCiudad3" ColumnName="urlfotoCiudad3" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

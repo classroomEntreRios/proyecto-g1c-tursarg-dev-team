@@ -17,11 +17,13 @@ import { ItinerariosComponent } from './components/itinerarios/itinerarios.compo
 import { AtraccionesComponent } from './components/atracciones/atracciones.component';
 import { UsuariosService } from './services/usuarios.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UsuariosComponent } from './components/usuarios/usuarios.component';
+//import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WidgetClimaComponent } from './components/widget-clima/widget-clima.component';
 import { DashAdminComponent } from './components/dashboard-admin/dash-admin/dash-admin.component';
 import { ModificacionusuariosComponent } from './components/modificacionusuarios/modificacionusuarios.component';
+import { EmailUnicoDirective } from './validations/email-unico.directive';
+import { EmailValidatorDirective } from './validations/email-validator.directive';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { ModificacionusuariosComponent } from './components/modificacionusuarios
     CiudadesComponent,
     ItinerariosComponent,
     AtraccionesComponent,
-    UsuariosComponent,
+    //UsuariosComponent,
+    EmailUnicoDirective,
+    EmailValidatorDirective,
     WidgetClimaComponent,
     DashAdminComponent,
     ModificacionusuariosComponent,

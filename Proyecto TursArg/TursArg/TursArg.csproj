@@ -290,6 +290,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Respuesta\Respuesta.cs" />
+    <Compile Include="Models\Respuesta\Seguridad.cs" />
     <Compile Include="Models\USUARIOS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -309,6 +311,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Model1.edmx.sql" />
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

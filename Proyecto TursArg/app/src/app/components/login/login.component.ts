@@ -28,21 +28,21 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
   }
-  cerrarsession() {
-    this.cookieToken.delete('Token')
-    this.router.navigate(['/']);
+ // cerrarsession() {
+   // this.cookieToken.delete('Token')
+    //this.router.navigate(['/']);
 
-  }
+ // }
 
   onSubmit() {
     if (this.formLogin.invalid) {
       this.formLogin.markAllAsTouched()
     }
-    console.log('perraaaaa', this.formLogin)
+   // console.log('perraaaaa', this.formLogin)
     return this.LoginService
       .login(this.formLogin.value)
       .subscribe(data => {
-        console.log('loginnnn', data);
+       // console.log('loginnnn', data);
         if (data.Resultado == 1) {
 
           /// guardo el Token en la Cookie ///

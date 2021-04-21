@@ -1,5 +1,6 @@
 import { WidgetClimaService } from './../../services/widget-clima.service';
 import { Component, OnInit } from '@angular/core';
+import swal from 'sweetalert2'
 
 @Component({
   selector: 'app-widget-clima',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WidgetClimaComponent implements OnInit {
 
-
+ 
   // Por defecto Parana
   location = { cityName: 'Parana' };
   weather = undefined;
@@ -39,7 +40,9 @@ export class WidgetClimaComponent implements OnInit {
 
       cityName.value = '';
     } else {
-      alert('Porfavor, ingrese una ciudad');
+      swal.fire('Ingrese una ciudad', '', 'error');
+
+     // alert('Porfavor, ingrese una ciudad');
     }
     cityName.focus();
     return false;

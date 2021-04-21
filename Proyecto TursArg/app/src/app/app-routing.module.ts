@@ -8,12 +8,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './components/index/index.component';
 import { LoginComponent } from './components/login/login.component';
-import { UsuariosComponent } from './components/usuarios/usuarios.component';
+//import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes =
   [
-    { path: '', component: IndexComponent },
+    { path: '', component: IndexComponent, pathMatch:'full' },
     { path: 'index', component: IndexComponent },
     { path: 'login', component: LoginComponent },
     { path: 'Ciudades', component: CiudadesComponent },

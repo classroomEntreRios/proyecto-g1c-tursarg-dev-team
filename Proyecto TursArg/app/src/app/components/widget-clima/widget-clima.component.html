@@ -13,16 +13,15 @@
     </div>
 </div>
 <br>
-<div class="container abs-center">
+<div class="container-fluid abs-center">
 
     <div class="row abs-center">
 
         <div class="abs-center" id="divWeatherMain">
             <div style="padding-right: 3rem; padding-left: -1;" class="row text-center">
                 <div id="cardClima">
-                    <div style="text-transform: uppercase;" class="weatherWidgetRow fa fa-map-pin pt-2 "><i
-                            aria-hidden="true"></i>
-                        {{weather.address}}</div>
+                    <div style="text-transform: uppercase;" class="weatherWidgetRow fa fa-map-pin pt-2 "><i aria-hidden="true"></i> {{weather.address}}
+                    </div>
 
                     <div *ngIf="weather.currentConditions.icon=='clear-day'" class="weatherWidgetRow">
                         <img class="img-fluid" src="https://i.ibb.co/3FDq0b4/day-clear.png" alt="soleado">
@@ -41,13 +40,11 @@
                         <p class="description-w">Lluvia</p>
                     </div>
                     <div *ngIf="weather.currentConditions.icon=='partly-cloudy-day'" class="weatherWidgetRow">
-                        <img class=" img-fluid" src="https://i.ibb.co/zrRK68r/day-partial-cloud.png"
-                            alt="nubladoParcialDia">
+                        <img class=" img-fluid" src="https://i.ibb.co/zrRK68r/day-partial-cloud.png" alt="nubladoParcialDia">
                         <p class="description-w">Parcialmente nublado</p>
                     </div>
                     <div *ngIf="weather.currentConditions.icon=='partly-cloudy-night'" class="weatherWidgetRow">
-                        <img class=" img-fluid" src="https://i.ibb.co/hfSq2Zr/night-partial-cloud.png"
-                            alt="nubladoParcialNoche">
+                        <img class=" img-fluid" src="https://i.ibb.co/hfSq2Zr/night-partial-cloud.png" alt="nubladoParcialNoche">
                         <p class="description-w">Parcialmente nublado</p>
                     </div>
                     <div *ngIf="weather.currentConditions.icon=='fog'" class="weatherWidgetRow">
@@ -75,8 +72,7 @@
                     <img class="imagenlogo img-fluid" src="https://i.ibb.co/3FDq0b4/day-clear.png" alt="soleado">
                 </div>
                 <div *ngIf="weather.days[1].icon=='clear-night'" class="weatherWidgetRow">
-                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/crcBdrg/night-clear.png"
-                        alt="despejadoNoche">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/crcBdrg/night-clear.png" alt="despejadoNoche">
                 </div>
                 <div *ngIf="weather.days[1].icon=='cloudy'" class="weatherWidgetRow">
                     <img class="imagenlogo img-fluid m-0" src="https://i.ibb.co/XyTGgdp/cloudy.png" alt="nublado">
@@ -85,12 +81,10 @@
                     <img class="imagenlogo img-fluid" src="https://i.ibb.co/9stT1fm/rain.png" alt="lluvia">
                 </div>
                 <div *ngIf="weather.days[1].icon=='partly-cloudy-day'" class="weatherWidgetRow">
-                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/zrRK68r/day-partial-cloud.png"
-                        alt="nubladoParcialDia">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/zrRK68r/day-partial-cloud.png" alt="nubladoParcialDia">
                 </div>
                 <div *ngIf="weather.days[1].icon=='partly-cloudy-night'" class="weatherWidgetRow">
-                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/hfSq2Zr/night-partial-cloud.png"
-                        alt="nubladoParcialNoche">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/hfSq2Zr/night-partial-cloud.png" alt="nubladoParcialNoche">
                 </div>
                 <div *ngIf="weather.days[1].icon=='fog'" class="weatherWidgetRow">
                     <img class="imagenlogo img-fluid" src="https://i.ibb.co/30mLckX/fog.png" alt="niebla">
@@ -112,8 +106,7 @@
                     <img class="imagenlogo img-fluid" src="https://i.ibb.co/3FDq0b4/day-clear.png" alt="soleado">
                 </div>
                 <div *ngIf="weather.days[2].icon=='clear-night'" class="weatherWidgetRow">
-                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/crcBdrg/night-clear.png"
-                        alt="despejadoNoche">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/crcBdrg/night-clear.png" alt="despejadoNoche">
                 </div>
                 <div *ngIf="weather.days[2].icon=='cloudy'" class="weatherWidgetRow">
                     <img class="imagenlogo img-fluid m-0" src="https://i.ibb.co/XyTGgdp/cloudy.png" alt="nublado">
@@ -122,12 +115,10 @@
                     <img class="imagenlogo img-fluid" src="https://i.ibb.co/9stT1fm/rain.png" alt="lluvia">
                 </div>
                 <div *ngIf="weather.days[2].icon=='partly-cloudy-day'" class="weatherWidgetRow">
-                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/zrRK68r/day-partial-cloud.png"
-                        alt="nubladoParcialDia">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/zrRK68r/day-partial-cloud.png" alt="nubladoParcialDia">
                 </div>
                 <div *ngIf="weather.days[2].icon=='partly-cloudy-night'" class="weatherWidgetRow">
-                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/hfSq2Zr/night-partial-cloud.png"
-                        alt="nubladoParcialNoche">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/hfSq2Zr/night-partial-cloud.png" alt="nubladoParcialNoche">
                 </div>
                 <div *ngIf="weather.days[2].icon=='fog'" class="weatherWidgetRow">
                     <img class="imagenlogo img-fluid" src="https://i.ibb.co/30mLckX/fog.png" alt="niebla">
@@ -149,8 +140,7 @@
                     <img class="imagenlogo img-fluid" src="https://i.ibb.co/3FDq0b4/day-clear.png" alt="soleado">
                 </div>
                 <div *ngIf="weather.days[3].icon=='clear-night'" class="weatherWidgetRow">
-                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/crcBdrg/night-clear.png"
-                        alt="despejadoNoche">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/crcBdrg/night-clear.png" alt="despejadoNoche">
                 </div>
                 <div *ngIf="weather.days[3].icon=='cloudy'" class="weatherWidgetRow">
                     <img class="imagenlogo img-fluid m-0" src="https://i.ibb.co/XyTGgdp/cloudy.png" alt="nublado">
@@ -159,12 +149,10 @@
                     <img class="imagenlogo img-fluid" src="https://i.ibb.co/9stT1fm/rain.png" alt="lluvia">
                 </div>
                 <div *ngIf="weather.days[3].icon=='partly-cloudy-day'" class="weatherWidgetRow">
-                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/zrRK68r/day-partial-cloud.png"
-                        alt="nubladoParcialDia">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/zrRK68r/day-partial-cloud.png" alt="nubladoParcialDia">
                 </div>
                 <div *ngIf="weather.days[3].icon=='partly-cloudy-night'" class="weatherWidgetRow">
-                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/hfSq2Zr/night-partial-cloud.png"
-                        alt="nubladoParcialNoche">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/hfSq2Zr/night-partial-cloud.png" alt="nubladoParcialNoche">
                 </div>
                 <div *ngIf="weather.days[3].icon=='fog'" class="weatherWidgetRow">
                     <img class="imagenlogo img-fluid" src="https://i.ibb.co/30mLckX/fog.png" alt="niebla">

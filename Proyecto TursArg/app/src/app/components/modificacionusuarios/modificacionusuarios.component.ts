@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { HttpClient } from '@angular/common/http';
-import { UsuariosComponent } from 'src/app/components/usuarios/usuarios.component'
+//import { UsuariosComponent } from 'src/app/components/usuarios/usuarios.component'
 import { FormGroup, Validator, Validators, FormBuilder, FormControl, FormsModule, NgForm } from '@angular/forms';
 import { Usuarios } from 'src/app/models/usuarios.model';
 import { pipe, Subscription } from 'rxjs';
@@ -24,7 +24,6 @@ export class ModificacionusuariosComponent implements OnInit {
   id: number;
   datosUsuario: usermodifica;
   form = new FormGroup({
-
     apellido: new FormControl(''),
     contrasenia: new FormControl('', [Validators.required, Validators.minLength(6)]),
     idUsuario: new FormControl(''),
@@ -53,6 +52,7 @@ export class ModificacionusuariosComponent implements OnInit {
   UpDate() {
     ////Trae id del usuario a mostrar
 
+
     this.selecionarusuario()
   }
 
@@ -61,7 +61,7 @@ export class ModificacionusuariosComponent implements OnInit {
     this.Token = this.cookieToken.get('Token');
     this.service.selecionarUsuario(this.Token).subscribe(data => {
       this.datosUsuario = data[0];
-      console.log('verrrrrfa', this.datosUsuario);
+     // console.log('verrrrrfa', this.datosUsuario);
       this.id = this.datosUsuario.idUsuario
       //console.log(id)
       this.form.setValue({
