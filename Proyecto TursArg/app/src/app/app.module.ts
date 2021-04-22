@@ -24,6 +24,8 @@ import { DashAdminComponent } from './components/dashboard-admin/dash-admin/dash
 import { ModificacionusuariosComponent } from './components/modificacionusuarios/modificacionusuarios.component';
 import { EmailUnicoDirective } from './validations/email-unico.directive';
 import { EmailValidatorDirective } from './validations/email-validator.directive';
+import { FiltroCiudadPipe } from './pipes/filtro-ciudad.pipe';
+import { CiudadesService } from './services/ciudades.service';
 
 
 @NgModule({
@@ -45,6 +47,7 @@ import { EmailValidatorDirective } from './validations/email-validator.directive
     WidgetClimaComponent,
     DashAdminComponent,
     ModificacionusuariosComponent,
+    FiltroCiudadPipe,
 
   ],
   imports: [

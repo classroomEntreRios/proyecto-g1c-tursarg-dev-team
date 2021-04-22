@@ -4,8 +4,8 @@
     <Key>
       <PropertyRef Name="codPostal" />
     </Key>
-    <Property Name="codPostal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="descripcionCiudad" Type="varchar" MaxLength="100" />
+    <Property Name="codPostal" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="descripcionCiudad" Type="text" />
     <Property Name="nombreCiudad" Type="varchar" MaxLength="50" />
     <Property Name="urlUbicacionCiudad" Type="varchar" MaxLength="150" />
     <Property Name="urlfotoCiudad1" Type="varchar" MaxLength="150" />

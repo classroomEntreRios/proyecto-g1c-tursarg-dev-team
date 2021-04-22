@@ -9,8 +9,8 @@
           <Key>
             <PropertyRef Name="codPostal" />
           </Key>
-          <Property Name="codPostal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="descripcionCiudad" Type="varchar" MaxLength="100" />
+          <Property Name="codPostal" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descripcionCiudad" Type="text" />
           <Property Name="nombreCiudad" Type="varchar" MaxLength="50" />
           <Property Name="urlUbicacionCiudad" Type="varchar" MaxLength="150" />
           <Property Name="urlfotoCiudad1" Type="varchar" MaxLength="150" />
@@ -64,7 +64,7 @@
             <PropertyRef Name="codPostal" />
           </Key>
           <Property Name="codPostal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="descripcionCiudad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="descripcionCiudad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="nombreCiudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="urlUbicacionCiudad" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="urlfotoCiudad1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
