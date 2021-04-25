@@ -20,6 +20,7 @@
     <EntitySetMapping Name="CIUDADES">
       <EntityTypeMapping TypeName="IsTypeOf(BDTursArgModel.CIUDADES)">
         <MappingFragment StoreEntitySet="CIUDADES">
+          <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
           <ScalarProperty Name="codPostal" ColumnName="codPostal" />
           <ScalarProperty Name="descripcionCiudad" ColumnName="descripcionCiudad" />
           <ScalarProperty Name="nombreCiudad" ColumnName="nombreCiudad" />

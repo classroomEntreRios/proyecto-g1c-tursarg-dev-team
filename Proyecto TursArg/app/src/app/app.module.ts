@@ -26,6 +26,7 @@ import { EmailUnicoDirective } from './validations/email-unico.directive';
 import { EmailValidatorDirective } from './validations/email-validator.directive';
 import { FiltroCiudadPipe } from './pipes/filtro-ciudad.pipe';
 import { CiudadesService } from './services/ciudades.service';
+import { ModificarCiudadComponent } from './components/modificar-ciudad/modificar-ciudad.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { CiudadesService } from './services/ciudades.service';
     DashAdminComponent,
     ModificacionusuariosComponent,
     FiltroCiudadPipe,
+    ModificarCiudadComponent,
 
   ],
   imports: [
@@ -58,7 +60,7 @@ import { CiudadesService } from './services/ciudades.service';
     AppRoutingModule,
     NgbModule
   ],
-  providers: [UsuariosService],
+  providers: [UsuariosService, CiudadesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -96,6 +96,7 @@ export class ModificacionusuariosComponent implements OnInit {
 
       Swal.fire('Modificación con exito', 'De click en el Boton', 'success');
       // this.router.navigate(['/']);
+      ////cierra el Modal con el id AddExpense////
       document.getElementById('AddExpense').click();
 
     });

@@ -13,7 +13,7 @@ export class WidgetClimaComponent implements OnInit {
   // Por defecto Parana
   location = { cityName: 'Parana' };
   weather = undefined;
-
+ 
   constructor(private weatherService: WidgetClimaService) { }
 
   ngOnInit() {

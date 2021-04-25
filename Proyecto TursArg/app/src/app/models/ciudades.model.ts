@@ -1,5 +1,6 @@
 export class Ciudades {
-
+    
+    idCiudad:number;
     codPostal: number;
     descripcionCiudad: string;
     nombreCiudad: string;

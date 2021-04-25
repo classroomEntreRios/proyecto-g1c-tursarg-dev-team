@@ -10,6 +10,12 @@
         </div>
     </div>
 </div>
+<div class="rows">
+    <div class="col">
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ciudadModal">Nuevo ciudad</button>
+    </div>
+
+</div>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -25,12 +31,13 @@
                         <td>{{post.codPostal}}</td>
                         <td>{{post.nombreCiudad}}</td>
                         <td>{{post.descripcionCiudad}}</td>
-                        <td><button type="button" class="btn btn-primary btn-sm">Modificar</button></td>
-                        <td><button type="button" class="btn btn-danger btn-sm">Eliminar</button></td>
+                        <td><button type="button" class="btn btn-primary btn-sm" (click)="premodificarciudad(post)" data-toggle="modal" data-target="#ciudadModal">Modificar</button></td>
+                        <td><button type="button" class="btn btn-danger btn-sm" (click)="borrarCiudad(post)">Eliminar</button></td>
                     </tr>
                 </tbody>
 
             </table>
         </div>
     </div>
+
 </div>

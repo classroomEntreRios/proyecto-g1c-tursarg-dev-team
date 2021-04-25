@@ -10,6 +10,7 @@ import { IndexComponent } from './components/index/index.component';
 import { LoginComponent } from './components/login/login.component';
 //import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ModificarCiudadComponent } from './components/modificar-ciudad/modificar-ciudad.component';
 
 const routes: Routes =
   [
@@ -22,7 +23,7 @@ const routes: Routes =
     { path: 'Foro', component: ForoComponent },
     { path: 'Chat', component: ChatComponent },
     { path: 'registerUser', component: RegisterComponent },
-
+    { path: 'modiCiudad', component: ModificarCiudadComponent },
   ];
 
 @NgModule({

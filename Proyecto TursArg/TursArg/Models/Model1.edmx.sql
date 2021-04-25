@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/18/2021 23:09:17
+-- Date Created: 04/24/2021 23:19:17
 -- Generated from EDMX file: C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -22,11 +22,11 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[USUARIOS]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[USUARIOS];
-GO
 IF OBJECT_ID(N'[dbo].[CIUDADES]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CIUDADES];
+GO
+IF OBJECT_ID(N'[dbo].[USUARIOS]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[USUARIOS];
 GO
 
 -- --------------------------------------------------
@@ -42,16 +42,17 @@ CREATE TABLE [dbo].[USUARIOS] (
     [apellido] varchar(50)  NULL,
     [telefono] bigint  NULL,
     [email] varchar(100)  NULL,
-    [contrasenia] varchar(260)  NULL,
+    [contrasenia] varchar(150)  NULL,
     [rolAdmin] bit  NULL,
-    [Token] varchar(250)  NULL
+    [Token] varchar(150)  NULL
 );
 GO
 
 -- Creating table 'CIUDADES'
 CREATE TABLE [dbo].[CIUDADES] (
-    [codPostal] int IDENTITY(1,1) NOT NULL,
-    [descripcionCiudad] varchar(100)  NULL,
+    [idCiudad] int IDENTITY(1,1) NOT NULL,
+    [codPostal] int  NOT NULL,
+    [descripcionCiudad] varchar(max)  NULL,
     [nombreCiudad] varchar(50)  NULL,
     [urlUbicacionCiudad] varchar(150)  NULL,
     [urlfotoCiudad1] varchar(150)  NULL,
@@ -70,10 +71,10 @@ ADD CONSTRAINT [PK_USUARIOS]
     PRIMARY KEY CLUSTERED ([idUsuario] ASC);
 GO
 
--- Creating primary key on [codPostal] in table 'CIUDADES'
+-- Creating primary key on [idCiudad] in table 'CIUDADES'
 ALTER TABLE [dbo].[CIUDADES]
 ADD CONSTRAINT [PK_CIUDADES]
-    PRIMARY KEY CLUSTERED ([codPostal] ASC);
+    PRIMARY KEY CLUSTERED ([idCiudad] ASC);
 GO
 
 -- --------------------------------------------------

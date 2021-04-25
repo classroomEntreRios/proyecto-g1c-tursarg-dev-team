@@ -44,7 +44,7 @@ namespace TursArg.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != cIUDADES.codPostal)
+            if (id != cIUDADES.idCiudad)
             {
                 return BadRequest();
             }
@@ -82,7 +82,7 @@ namespace TursArg.Controllers
             db.CIUDADES.Add(cIUDADES);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = cIUDADES.codPostal }, cIUDADES);
+            return CreatedAtRoute("DefaultApi", new { id = cIUDADES.idCiudad }, cIUDADES);
         }
 
         // DELETE: api/CIUDADES/5
@@ -112,7 +112,7 @@ namespace TursArg.Controllers
 
         private bool CIUDADESExists(int id)
         {
-            return db.CIUDADES.Count(e => e.codPostal == id) > 0;
+            return db.CIUDADES.Count(e => e.idCiudad == id) > 0;
         }
     }
 }

@@ -14,6 +14,7 @@ namespace TursArg.Models
     
     public partial class CIUDADES
     {
+        public int idCiudad { get; set; }
         public int codPostal { get; set; }
         public string descripcionCiudad { get; set; }
         public string nombreCiudad { get; set; }
