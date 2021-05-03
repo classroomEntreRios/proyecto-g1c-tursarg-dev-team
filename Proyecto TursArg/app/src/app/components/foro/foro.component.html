@@ -1,1 +1,77 @@
-<p>foro works!</p>
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div>
+        <h2>Foro TursArg</h2>
+    </div>
+    <div class="container">
+        <div *ngIf="Perfil" class="rows">
+            <div class="col">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#temadeforoModal">Añadir un Tema Debate</button>
+                </div>
+            </div>
+        </div>
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tema</th>
+                    <th scope="col">fecha Inicio</th>
+                    <th scope="col">Comenzado por</th>
+                    <th scope="col">Replicas</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let post of tema_de_foro; index as i">
+                    <th scope="row">{{i + 1}}</th>
+
+                    <td><a [routerLink]="['/publicaciones', post.idTema,post.nombreDeTema]" class="nav-link" href="">{{post.nombreDeTema}}</a></td>
+                    <td>{{post.fechaTema}}</td>
+                    <div *ngFor="let user  of usuarios">
+                        <div *ngIf="user.idUsuario==post.idUserForo">
+                            <td>{{user.nombre}} {{user.apellido}}</td>
+                        </div>
+                    </div>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="temadeforoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Añadir Tema a Debatir</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Tema de Debate:</label>
+                        <input type="text" class="form-control" id="nombreDeTema" name="nombreDeTema" formControlName="nombreDeTema">
+                        <span class="form-text text-danger" *ngIf="CampoValido('nombreDeTema')">Dato requerido</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="cerrar" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Crear Tema</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

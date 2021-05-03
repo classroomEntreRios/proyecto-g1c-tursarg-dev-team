@@ -1,35 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="BDTursArgModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="BDTursArgModelStoreContainer">
-    <EntitySet Name="USUARIOS" EntityType="BDTursArgModel.Store.USUARIOS" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CIUDADES" EntityType="BDTursArgModel.Store.CIUDADES" store:Type="Tables" Schema="dbo" />
-  </EntityContainer>
-  <EntityType Name="USUARIOS">
-    <Key>
-      <PropertyRef Name="idUsuario" />
-    </Key>
-    <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="urlFotoUsuario" Type="varchar" Nullable="true" MaxLength="100" />
-    <Property Name="nombreUsuario" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="nombre" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="apellido" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="telefono" Type="bigint" Nullable="true" />
-    <Property Name="email" Type="varchar" Nullable="true" MaxLength="100" />
-    <Property Name="contrasenia" Type="varchar" Nullable="true" MaxLength="150" />
-    <Property Name="rolAdmin" Type="bit" Nullable="true" />
-    <Property Name="Token" Type="varchar" Nullable="true" MaxLength="150" />
-  </EntityType>
+<Schema Namespace="BDTursArgModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="CIUDADES">
     <Key>
       <PropertyRef Name="idCiudad" />
     </Key>
     <Property Name="idCiudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="codPostal" Type="int" Nullable="false" />
-    <Property Name="descripcionCiudad" Type="varchar(max)" Nullable="true" />
-    <Property Name="nombreCiudad" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="urlUbicacionCiudad" Type="varchar" Nullable="true" MaxLength="150" />
-    <Property Name="urlfotoCiudad1" Type="varchar" Nullable="true" MaxLength="150" />
-    <Property Name="urlfotoCiudad2" Type="varchar" Nullable="true" MaxLength="150" />
-    <Property Name="urlfotoCiudad3" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="descripcionCiudad" Type="varchar(max)" />
+    <Property Name="nombreCiudad" Type="varchar" MaxLength="50" />
+    <Property Name="urlUbicacionCiudad" Type="varchar" MaxLength="150" />
+    <Property Name="urlfotoCiudad1" Type="varchar" MaxLength="150" />
+    <Property Name="urlfotoCiudad2" Type="varchar" MaxLength="150" />
+    <Property Name="urlfotoCiudad3" Type="varchar" MaxLength="150" />
   </EntityType>
+  <EntityType Name="PUBLICACIONES">
+    <Key>
+      <PropertyRef Name="idPublicacion" />
+    </Key>
+    <Property Name="idPublicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fechaPublicacion" Type="date" />
+    <Property Name="textoPublicacion" Type="text" />
+    <Property Name="idUserPublicacion" Type="int" />
+    <Property Name="idTema_publicacion" Type="int" />
+  </EntityType>
+  <EntityType Name="TEMAS_DE_FORO">
+    <Key>
+      <PropertyRef Name="idTema" />
+    </Key>
+    <Property Name="idTema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreDeTema" Type="varchar" MaxLength="50" />
+    <Property Name="fechaTema" Type="date" />
+    <Property Name="fechaCierre" Type="date" />
+    <Property Name="idUserForo" Type="int" />
+  </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="urlFotoUsuario" Type="varchar" MaxLength="100" />
+    <Property Name="nombreUsuario" Type="varchar" MaxLength="50" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="apellido" Type="varchar" MaxLength="50" />
+    <Property Name="telefono" Type="bigint" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="contrasenia" Type="varchar" MaxLength="150" />
+    <Property Name="rolAdmin" Type="bit" />
+    <Property Name="Token" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityContainer Name="BDTursArgModelStoreContainer">
+    <EntitySet Name="CIUDADES" EntityType="Self.CIUDADES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PUBLICACIONES" EntityType="Self.PUBLICACIONES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TEMAS_DE_FORO" EntityType="Self.TEMAS_DE_FORO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
 </Schema>

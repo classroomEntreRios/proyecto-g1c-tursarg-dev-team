@@ -39,6 +39,10 @@ borrarCiudad(id: number){
 
   return this.http.delete(this.rootURL + '/CIUDADES?id=' + id);
 }
+/////// verifica codigo postal si existe //////
+Verificarcodpost(codpost:number):Observable<string[]>{
+  return this.http.get<string[]>(this.rootURL+'/CIUDADES?codpost='+codpost);
 
+}
 
 }

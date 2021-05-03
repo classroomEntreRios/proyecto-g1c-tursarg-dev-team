@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     return this.LoginService
       .login(this.formLogin.value)
       .subscribe(data => {
-       // console.log('loginnnn', data);
+       console.log('loginnnn', data);
         if (data.Resultado == 1) {
 
           /// guardo el Token en la Cookie ///
@@ -53,8 +53,20 @@ export class LoginComponent implements OnInit {
           swal.fire('Enhorabuena', 'Bienvenido', 'success');
 
 
+          this.router.navigate(['/index']);
+         ///////admin true////
+        }else if (data.Resultado == 3) {
+        /// guardo el Token en la Cookie ///
+        this.token = data.Datos
+        this.cookieToken.set('Token', this.token);
+        this.token = this.cookieToken.get('Token');
+        //
+        
+        console.log('Tokenn', this.token)
+        swal.fire('Enhorabuena', 'Bienvenido', 'success');
 
-          this.router.navigate(['/']);
+        this.router.navigate(['/dashboard']);
+        
         } else {
           swal.fire('Error Login', 'Verifique Datos', 'error');
 

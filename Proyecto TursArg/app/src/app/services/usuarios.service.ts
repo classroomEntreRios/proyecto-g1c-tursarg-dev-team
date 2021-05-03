@@ -38,6 +38,15 @@ VerificarEmail(email:string):Observable<string[]>{
   return this.http.get<string[]>(this.rootURL+'/USUARIOS1?email='+email);
 }
 
+
+/////listar usuario/////
+listarusuarios(): Observable<Usuarios[]> {
+
+  return this.http.get<Usuarios[]>(this.rootURL + '/USUARIOS1')
+}
+
+
+
 }
 
 

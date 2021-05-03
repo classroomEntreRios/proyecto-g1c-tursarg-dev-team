@@ -17,25 +17,33 @@
                     <input type="hidden" class="form-control" #idCiudad="ngModel" name="idCiudad" [(ngModel)]="service.formData.idCiudad">
                     <div class="form-group">
                         <label for="codPost" class="col-form-label">Codigo Postal:</label>
-                        <input type="number" class="form-control" #codPostal="ngModel" name="codPostal" [(ngModel)]="service.formData.codPostal">
+                        <input type="number" class="form-control" #codPostal="ngModel" name="codPostal" required [(ngModel)]="service.formData.codPostal">
+                        <div *ngIf="codPostal.invalid && (codPostal.dirty || codPostal.touched)" class="alert alert-danger">
+                            <div *ngIf="codPostal.invalid">
+                                Introduzca un Codigo Postal
+                            </div>
+                            <div *ngIf="codPostal.errors.CodpostUnico">
+                                El Codigo Postal ya existe!!
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="nombreCiudad" class="col-form-label">Nombre Ciudad:</label>
-                        <input type="text" class="form-control" #nombreCiudad="ngModel" name="nombreCiudad" [(ngModel)]="service.formData.nombreCiudad">
+                        <input type="text" class="form-control" #nombreCiudad="ngModel" name="nombreCiudad" required [(ngModel)]="service.formData.nombreCiudad">
                     </div>
                     <div class="form-group">
                         <label for="descripcionCiudad" class="col-form-label">Descripción de Ciudad:</label>
-                        <textarea class="form-control" rows="5" #descripcionCiudad="ngModel" name="descripcionCiudad" [(ngModel)]="service.formData.descripcionCiudad"></textarea>
+                        <textarea class="form-control" rows="5" #descripcionCiudad="ngModel" name="descripcionCiudad" required [(ngModel)]="service.formData.descripcionCiudad"></textarea>
 
                     </div>
                     <div class="form-group">
                         <label for="urlUbicacionCiudad" class="col-form-label">Ubicacion:</label>
-                        <input type="text" class="form-control" #urlUbicacionCiudad="ngModel" name="urlUbicacionCiudad" [(ngModel)]="service.formData.urlUbicacionCiudad">
+                        <input type="text" class="form-control" #urlUbicacionCiudad="ngModel" name="urlUbicacionCiudad" requiere [(ngModel)]="service.formData.urlUbicacionCiudad">
 
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" id="AddExpense" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" id="ciudad" (click)="resetForm()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
 

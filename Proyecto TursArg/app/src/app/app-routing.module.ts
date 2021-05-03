@@ -11,6 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 //import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ModificarCiudadComponent } from './components/modificar-ciudad/modificar-ciudad.component';
+import { DashAdminComponent } from './components/dashboard-admin/dash-admin/dash-admin.component';
+import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
 
 const routes: Routes =
   [
@@ -24,6 +26,9 @@ const routes: Routes =
     { path: 'Chat', component: ChatComponent },
     { path: 'registerUser', component: RegisterComponent },
     { path: 'modiCiudad', component: ModificarCiudadComponent },
+    { path: 'dashboard', component:DashAdminComponent},
+    { path: 'publicaciones/:id/:TEMA', component:PublicacionesComponent},
+    { path: '**', redirectTo:'index'}, 
   ];
 
 @NgModule({

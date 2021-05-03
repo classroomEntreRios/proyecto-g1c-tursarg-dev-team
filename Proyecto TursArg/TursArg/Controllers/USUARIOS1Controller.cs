@@ -22,6 +22,7 @@ namespace TursArg.Controllers
         // GET: api/USUARIOS1
         public IQueryable<USUARIOS> GetUSUARIOS()
         {
+           // db.Configuration.ProxyCreationEnabled = false;
             return db.USUARIOS;
         }
 
@@ -147,11 +148,20 @@ namespace TursArg.Controllers
             {
                 var usuarioRegistrado = db.USUARIOS.Where(a => a.email == val.email && a.contrasenia == val.contrasenia).ToList();
 
+                var usuarioAdmin = usuarioRegistrado[0].rolAdmin;
                 if (usuarioRegistrado.Count > 0)
                 {
-                    oRespuesta.Resultado = 1;
-                    oRespuesta.Mensaje = "Login correcto";
-
+                    if (usuarioAdmin == true)
+                    {
+                        oRespuesta.Resultado = 3;
+                        oRespuesta.Mensaje = "Login correcto";
+                    }
+                    else
+                    {
+                        oRespuesta.Resultado = 1;
+                        oRespuesta.Mensaje = "Login correcto";
+                    }
+                    
                     ///// genera el Token ////
                     oRespuesta.Datos = Guid.NewGuid().ToString();
 

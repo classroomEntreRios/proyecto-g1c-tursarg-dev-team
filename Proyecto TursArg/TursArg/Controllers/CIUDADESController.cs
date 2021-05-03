@@ -35,6 +35,23 @@ namespace TursArg.Controllers
             return Ok(cIUDADES);
         }
 
+        ///Verifica si ya exite el codigo postal en la base de datos //////
+        // GET: api/CIUDADES/5
+        [ResponseType(typeof(CIUDADES))]
+        public IHttpActionResult Getcodpost(int codpost)
+        {
+
+            var cIUDAD = from c in db.CIUDADES
+                           where (c.codPostal == (codpost))
+                           select c;
+            if (cIUDAD == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(cIUDAD);
+        }
+
         // PUT: api/CIUDADES/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCIUDADES(int id, CIUDADES cIUDADES)

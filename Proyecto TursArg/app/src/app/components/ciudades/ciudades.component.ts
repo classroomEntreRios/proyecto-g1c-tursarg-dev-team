@@ -5,6 +5,7 @@ import { CiudadesService } from 'src/app/services/ciudades.service';
 import swal from 'sweetalert2';
 import{NgForm} from '@angular/forms';
 import{Location} from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ciudades',
@@ -15,7 +16,7 @@ export class CiudadesComponent implements OnInit {
   filtro='';
   ciudad : any[];
   formData:Ciudades;
-  constructor(private service:CiudadesService, private location:Location) { }
+  constructor(private service:CiudadesService, private location:Location, private router:Router) { }
 
   ngOnInit(){
     this.listarciudades();
@@ -54,7 +55,7 @@ export class CiudadesComponent implements OnInit {
           'La Ciudad ha sido eliminada.',
           'success'
         )
-        location.reload() 
+        location.reload()
       })
     }
   })

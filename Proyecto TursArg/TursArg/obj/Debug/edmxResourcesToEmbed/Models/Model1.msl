@@ -18,16 +18,38 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CIUDADES">
-      <EntityTypeMapping TypeName="IsTypeOf(BDTursArgModel.CIUDADES)">
+      <EntityTypeMapping TypeName="BDTursArgModel.CIUDADES">
         <MappingFragment StoreEntitySet="CIUDADES">
-          <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
-          <ScalarProperty Name="codPostal" ColumnName="codPostal" />
-          <ScalarProperty Name="descripcionCiudad" ColumnName="descripcionCiudad" />
-          <ScalarProperty Name="nombreCiudad" ColumnName="nombreCiudad" />
-          <ScalarProperty Name="urlUbicacionCiudad" ColumnName="urlUbicacionCiudad" />
-          <ScalarProperty Name="urlfotoCiudad1" ColumnName="urlfotoCiudad1" />
-          <ScalarProperty Name="urlfotoCiudad2" ColumnName="urlfotoCiudad2" />
           <ScalarProperty Name="urlfotoCiudad3" ColumnName="urlfotoCiudad3" />
+          <ScalarProperty Name="urlfotoCiudad2" ColumnName="urlfotoCiudad2" />
+          <ScalarProperty Name="urlfotoCiudad1" ColumnName="urlfotoCiudad1" />
+          <ScalarProperty Name="urlUbicacionCiudad" ColumnName="urlUbicacionCiudad" />
+          <ScalarProperty Name="nombreCiudad" ColumnName="nombreCiudad" />
+          <ScalarProperty Name="descripcionCiudad" ColumnName="descripcionCiudad" />
+          <ScalarProperty Name="codPostal" ColumnName="codPostal" />
+          <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEMAS_DE_FORO">
+      <EntityTypeMapping TypeName="BDTursArgModel.TEMAS_DE_FORO">
+        <MappingFragment StoreEntitySet="TEMAS_DE_FORO">
+          <ScalarProperty Name="idUserForo" ColumnName="idUserForo" />
+          <ScalarProperty Name="fechaCierre" ColumnName="fechaCierre" />
+          <ScalarProperty Name="fechaTema" ColumnName="fechaTema" />
+          <ScalarProperty Name="nombreDeTema" ColumnName="nombreDeTema" />
+          <ScalarProperty Name="idTema" ColumnName="idTema" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PUBLICACIONES">
+      <EntityTypeMapping TypeName="BDTursArgModel.PUBLICACIONES">
+        <MappingFragment StoreEntitySet="PUBLICACIONES">
+          <ScalarProperty Name="idTema_publicacion" ColumnName="idTema_publicacion" />
+          <ScalarProperty Name="idUserPublicacion" ColumnName="idUserPublicacion" />
+          <ScalarProperty Name="textoPublicacion" ColumnName="textoPublicacion" />
+          <ScalarProperty Name="fechaPublicacion" ColumnName="fechaPublicacion" />
+          <ScalarProperty Name="idPublicacion" ColumnName="idPublicacion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
