@@ -1,14 +1,23 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-    <div>
-        <h2>Foro TursArg</h2>
+    <br>
+    <div class="abs-center" style="padding-left: 1.3rem;">
+        <h2> Foro TursArg</h2>
     </div>
+
+    <div class="container abs-center text-center mt-2">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum, explicabo! Vitae nam nulla numquam ab fugiat! Hic
+        consequuntur pariatur eius culpa dignissimos corrupti optio neque cumque, eos dolores ullam delectus sint nam,
+        ipsam aliquam! Laudantium necessitatibus atque odio quam architecto
+    </div>
+    <br>
     <div class="container">
         <div *ngIf="Perfil" class="rows">
             <div class="col">
                 <div class="form-group">
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#temadeforoModal">Añadir un Tema Debate</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                        data-target="#temadeforoModal">Añadir un Tema Debate</button>
                 </div>
             </div>
         </div>
@@ -29,7 +38,8 @@
                 <tr *ngFor="let post of tema_de_foro; index as i">
                     <th scope="row">{{i + 1}}</th>
 
-                    <td><a [routerLink]="['/publicaciones', post.idTema,post.nombreDeTema]" class="nav-link" href="">{{post.nombreDeTema}}</a></td>
+                    <td><a [routerLink]="['/publicaciones', post.idTema,post.nombreDeTema]" class="nav-link"
+                            href="">{{post.nombreDeTema}}</a></td>
                     <td>{{post.fechaTema}}</td>
                     <div *ngFor="let user  of usuarios">
                         <div *ngIf="user.idUsuario==post.idUserForo">
@@ -61,7 +71,8 @@
                 <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Tema de Debate:</label>
-                        <input type="text" class="form-control" id="nombreDeTema" name="nombreDeTema" formControlName="nombreDeTema">
+                        <input type="text" class="form-control" id="nombreDeTema" name="nombreDeTema"
+                            formControlName="nombreDeTema">
                         <span class="form-text text-danger" *ngIf="CampoValido('nombreDeTema')">Dato requerido</span>
                     </div>
                     <div class="modal-footer">

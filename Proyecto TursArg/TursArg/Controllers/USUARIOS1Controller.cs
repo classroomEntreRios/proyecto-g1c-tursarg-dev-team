@@ -17,7 +17,7 @@ namespace TursArg.Controllers
 {
     public class USUARIOS1Controller : ApiController
     {
-        private BDTursArgEntities1 db = new BDTursArgEntities1();
+        private BDTursArgEntities db = new BDTursArgEntities();
 
         // GET: api/USUARIOS1
         public IQueryable<USUARIOS> GetUSUARIOS()

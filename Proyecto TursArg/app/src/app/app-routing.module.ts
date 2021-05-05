@@ -13,22 +13,24 @@ import { RegisterComponent } from './components/register/register.component';
 import { ModificarCiudadComponent } from './components/modificar-ciudad/modificar-ciudad.component';
 import { DashAdminComponent } from './components/dashboard-admin/dash-admin/dash-admin.component';
 import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
+import { ConsultasDashboardComponent } from './components/consultas-dashboard/consultas-dashboard.component';
 
 const routes: Routes =
   [
-    { path: '', component: IndexComponent, pathMatch:'full' },
+    { path: '', component: IndexComponent, pathMatch: 'full' },
     { path: 'index', component: IndexComponent },
     { path: 'login', component: LoginComponent },
     { path: 'Ciudades', component: CiudadesComponent },
     { path: 'Atracciones', component: AtraccionesComponent },
     { path: 'Itinerarios', component: ItinerariosComponent },
     { path: 'Foro', component: ForoComponent },
-    { path: 'Chat', component: ChatComponent },
+    { path: 'Contacto', component: ChatComponent },
     { path: 'registerUser', component: RegisterComponent },
     { path: 'modiCiudad', component: ModificarCiudadComponent },
-    { path: 'dashboard', component:DashAdminComponent},
-    { path: 'publicaciones/:id/:TEMA', component:PublicacionesComponent},
-    { path: '**', redirectTo:'index'}, 
+    { path: 'dashboard', component: DashAdminComponent },
+    { path: 'ConsultasDash', component: ConsultasDashboardComponent },
+    { path: 'publicaciones/:id/:TEMA', component: PublicacionesComponent },
+    { path: '**', redirectTo: 'index' },
   ];
 
 @NgModule({

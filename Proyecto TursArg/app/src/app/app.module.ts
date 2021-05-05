@@ -1,3 +1,4 @@
+import { ConsultasMailService } from 'src/app/services/consultas-mail.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -31,6 +32,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { CodpostUnicoDirective } from './validations/codpost-unico.directive';
 import { TemaDeForoService } from './services/tema-de-foro.service';
 import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
+import { ConsultasDashboardComponent } from './components/consultas-dashboard/consultas-dashboard.component';
 
 
 
@@ -59,8 +61,9 @@ import { PublicacionesComponent } from './components/publicaciones/publicaciones
     ModificarCiudadComponent,
     CodpostUnicoDirective,
     PublicacionesComponent,
-    
-   
+    ConsultasDashboardComponent,
+
+
   ],
   imports: [
     ReactiveFormsModule,
@@ -69,10 +72,10 @@ import { PublicacionesComponent } from './components/publicaciones/publicaciones
     FormsModule,
     AppRoutingModule,
     NgbModule,
-    
+
   ],
-  providers: [UsuariosService, CiudadesService, TemaDeForoService,
-  {provide: LocationStrategy, useClass:HashLocationStrategy}
+  providers: [UsuariosService, CiudadesService, TemaDeForoService, ConsultasMailService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

@@ -265,6 +265,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CIUDADESController.cs" />
+    <Compile Include="Controllers\CONSULTAS_VIAEMAILController.cs" />
     <Compile Include="Controllers\Encriptacion\Encriptacion.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PUBLICACIONESController.cs" />
@@ -275,6 +276,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CIUDADES.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CONSULTAS_VIAEMAIL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">

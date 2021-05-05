@@ -5,13 +5,24 @@
       <PropertyRef Name="idCiudad" />
     </Key>
     <Property Name="idCiudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="codPostal" Type="int" Nullable="false" />
-    <Property Name="descripcionCiudad" Type="varchar(max)" />
+    <Property Name="codPostal" Type="int" />
+    <Property Name="descripcionCiudad" Type="varchar" MaxLength="100" />
     <Property Name="nombreCiudad" Type="varchar" MaxLength="50" />
     <Property Name="urlUbicacionCiudad" Type="varchar" MaxLength="150" />
     <Property Name="urlfotoCiudad1" Type="varchar" MaxLength="150" />
     <Property Name="urlfotoCiudad2" Type="varchar" MaxLength="150" />
     <Property Name="urlfotoCiudad3" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="CONSULTAS_VIAEMAIL">
+    <Key>
+      <PropertyRef Name="idConsulta" />
+    </Key>
+    <Property Name="idConsulta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_Apellido" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="telefono" Type="bigint" />
+    <Property Name="motivoConsulta" Type="varchar" MaxLength="50" />
+    <Property Name="Mensaje" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="PUBLICACIONES">
     <Key>
@@ -19,7 +30,7 @@
     </Key>
     <Property Name="idPublicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fechaPublicacion" Type="date" />
-    <Property Name="textoPublicacion" Type="text" />
+    <Property Name="textoPublicacion" Type="varchar" MaxLength="200" />
     <Property Name="idUserPublicacion" Type="int" />
     <Property Name="idTema_publicacion" Type="int" />
   </EntityType>
@@ -29,9 +40,9 @@
     </Key>
     <Property Name="idTema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombreDeTema" Type="varchar" MaxLength="50" />
+    <Property Name="idUserForo" Type="int" />
     <Property Name="fechaTema" Type="date" />
     <Property Name="fechaCierre" Type="date" />
-    <Property Name="idUserForo" Type="int" />
   </EntityType>
   <EntityType Name="USUARIOS">
     <Key>
@@ -44,12 +55,13 @@
     <Property Name="apellido" Type="varchar" MaxLength="50" />
     <Property Name="telefono" Type="bigint" />
     <Property Name="email" Type="varchar" MaxLength="100" />
-    <Property Name="contrasenia" Type="varchar" MaxLength="150" />
+    <Property Name="contrasenia" Type="varchar" MaxLength="260" />
     <Property Name="rolAdmin" Type="bit" />
-    <Property Name="Token" Type="varchar" MaxLength="150" />
+    <Property Name="Token" Type="varchar" MaxLength="250" />
   </EntityType>
   <EntityContainer Name="BDTursArgModelStoreContainer">
     <EntitySet Name="CIUDADES" EntityType="Self.CIUDADES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CONSULTAS_VIAEMAIL" EntityType="Self.CONSULTAS_VIAEMAIL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PUBLICACIONES" EntityType="Self.PUBLICACIONES" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TEMAS_DE_FORO" EntityType="Self.TEMAS_DE_FORO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />

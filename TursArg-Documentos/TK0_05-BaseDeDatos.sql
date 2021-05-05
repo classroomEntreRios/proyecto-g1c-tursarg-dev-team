@@ -1,6 +1,6 @@
 
 create BDTursArg
-use BDTursAgr
+use BDTursArg
 
 
 -- tabla USUARIOS ACTOR
@@ -41,20 +41,31 @@ create table TEMAS_DE_FORO(
 idTema int NOT NULL IDENTITY (1,1),
 nombreDeTema varchar(50),
 idUserForo int,
-constraint pk_ct primary key(idTema),
-constraint fk_cut foreign key(idUserForo) references USUARIOS (idUsuario)
+fechaTema date,
+fechaCierre date,
+constraint pk_ct primary key(idTema)
+
+)
+
+-- tabla CONSULTAS VIA MAIL
+create table CONSULTAS_VIAEMAIL(
+idConsulta int NOT NULL IDENTITY (1,1),
+Nombre_Apellido varchar (50) ,
+email varchar(100) ,
+telefono bigint ,
+motivoConsulta varchar(50),
+Mensaje varchar(200),
+constraint pk_consds primary key(idConsulta)
 )
 
 -- tabla PUBLICACION
 create table PUBLICACIONES(
 idPublicacion int NOT NULL IDENTITY (1,1),
 fechaPublicacion date,
-texto text,
+textoPublicacion varchar(200),
 idUserPublicacion int,
 idTema_publicacion int, -- HACE REFERENCIA A LA RELACION CON TEMA_DE_FORO
-constraint pk_cp primary key(idPublicacion),
-constraint fk_ftema_publi foreign key(idTema_publicacion) references TEMAS_DE_FORO (idTema),
-constraint fk_fid_User foreign key(idUserPublicacion) references USUARIOS (idUsuario)
+constraint pk_cp primary key(idPublicacion)
 )
 
 -- tabla DEPARTAMENTOS
@@ -66,13 +77,15 @@ constraint pk_cd primary key(idDepartamento)
 
 -- tabla CIUDADES
 create table CIUDADES(
-codPostal int NOT NULL IDENTITY (1,1),
+idCiudad int NOT NULL IDENTITY (1,1),
+codPostal int,
 descripcionCiudad varchar(100),
 nombreCiudad varchar(50),
 urlUbicacionCiudad varchar(150),
 urlfotoCiudad1 varchar(150),
 urlfotoCiudad2 varchar(150),
-urlfotoCiudad3 varchar(150)
+urlfotoCiudad3 varchar(150),
+constraint pk_caciu primary key(idCiudad)
 )
 
 

@@ -14,7 +14,7 @@ namespace TursArg.Controllers
 {
     public class TEMASDEFOROController : ApiController
     {
-        private BDTursArgEntities1 db = new BDTursArgEntities1();
+        private BDTursArgEntities db = new BDTursArgEntities();
 
         // GET: api/TEMASDEFORO
         public IQueryable<TEMAS_DE_FORO> GetTEMAS_DE_FORO()

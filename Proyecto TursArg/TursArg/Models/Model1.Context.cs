@@ -13,10 +13,10 @@ namespace TursArg.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BDTursArgEntities1 : DbContext
+    public partial class BDTursArgEntities : DbContext
     {
-        public BDTursArgEntities1()
-            : base("name=BDTursArgEntities1")
+        public BDTursArgEntities()
+            : base("name=BDTursArgEntities")
         {
         }
     
@@ -25,9 +25,10 @@ namespace TursArg.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<USUARIOS> USUARIOS { get; set; }
         public virtual DbSet<CIUDADES> CIUDADES { get; set; }
-        public virtual DbSet<TEMAS_DE_FORO> TEMAS_DE_FORO { get; set; }
         public virtual DbSet<PUBLICACIONES> PUBLICACIONES { get; set; }
+        public virtual DbSet<TEMAS_DE_FORO> TEMAS_DE_FORO { get; set; }
+        public virtual DbSet<USUARIOS> USUARIOS { get; set; }
+        public virtual DbSet<CONSULTAS_VIAEMAIL> CONSULTAS_VIAEMAIL { get; set; }
     }
 }

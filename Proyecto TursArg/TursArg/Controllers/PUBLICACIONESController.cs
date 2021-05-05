@@ -14,7 +14,7 @@ namespace TursArg.Controllers
 {
     public class PUBLICACIONESController : ApiController
     {
-        private BDTursArgEntities1  db = new BDTursArgEntities1();
+        private BDTursArgEntities  db = new BDTursArgEntities();
 
         // GET: api/PUBLICACIONES
         public IQueryable<PUBLICACIONES> GetPUBLICACIONES()

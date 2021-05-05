@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(form: NgForm) {
 
     this.insertRecord(form);
-   
+
 
     // alert("Felicidades, has sido registrad@");
   }

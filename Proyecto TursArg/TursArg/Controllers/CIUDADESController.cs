@@ -14,7 +14,7 @@ namespace TursArg.Controllers
 {
     public class CIUDADESController : ApiController
     {
-        private BDTursArgEntities1 db = new BDTursArgEntities1();
+        private BDTursArgEntities db = new BDTursArgEntities();
 
         // GET: api/CIUDADES
         public IQueryable<CIUDADES> GetCIUDADES()
@@ -108,6 +108,7 @@ namespace TursArg.Controllers
         {
             CIUDADES cIUDADES = db.CIUDADES.Find(id);
             if (cIUDADES == null)
+                
             {
                 return NotFound();
             }

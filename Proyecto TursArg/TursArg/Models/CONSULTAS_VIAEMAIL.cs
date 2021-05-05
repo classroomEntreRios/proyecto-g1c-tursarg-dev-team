@@ -12,12 +12,13 @@ namespace TursArg.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TEMAS_DE_FORO
+    public partial class CONSULTAS_VIAEMAIL
     {
-        public int idTema { get; set; }
-        public string nombreDeTema { get; set; }
-        public Nullable<int> idUserForo { get; set; }
-        public Nullable<System.DateTime> fechaTema { get; set; }
-        public Nullable<System.DateTime> fechaCierre { get; set; }
+        public int idConsulta { get; set; }
+        public string Nombre_Apellido { get; set; }
+        public string email { get; set; }
+        public Nullable<long> telefono { get; set; }
+        public string motivoConsulta { get; set; }
+        public string Mensaje { get; set; }
     }
 }

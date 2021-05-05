@@ -10,7 +10,7 @@ namespace TursArg.Controllers
     public class UsuariosController : Controller
     {
         // creo variable de tipo base de datos con terminación entities
-        BDTursArgEntities1 bd = new BDTursArgEntities1();
+        BDTursArgEntities bd = new BDTursArgEntities();
         // GET: Usuarios
         public ActionResult Index()
         {
