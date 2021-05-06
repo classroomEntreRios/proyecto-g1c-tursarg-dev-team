@@ -27,7 +27,7 @@ import { EmailValidatorDirective } from './validations/email-validator.directive
 import { FiltroCiudadPipe } from './pipes/filtro-ciudad.pipe';
 import { CiudadesService } from './services/ciudades.service';
 import { ModificarCiudadComponent } from './components/modificar-ciudad/modificar-ciudad.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { CodpostUnicoDirective } from './validations/codpost-unico.directive';
 import { TemaDeForoService } from './services/tema-de-foro.service';
 import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
@@ -71,7 +71,7 @@ import { PublicacionesComponent } from './components/publicaciones/publicaciones
     NgbModule,
     
   ],
-  providers: [UsuariosService, CiudadesService, TemaDeForoService,
+  providers: [UsuariosService, CiudadesService, TemaDeForoService, DatePipe,
   {provide: LocationStrategy, useClass:HashLocationStrategy}
   ],
   bootstrap: [AppComponent]

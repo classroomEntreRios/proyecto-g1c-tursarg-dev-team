@@ -18,7 +18,7 @@
       <PropertyRef Name="idPublicacion" />
     </Key>
     <Property Name="idPublicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="fechaPublicacion" Type="date" />
+    <Property Name="fechaPublicacion" Type="datetime" />
     <Property Name="textoPublicacion" Type="text" />
     <Property Name="idUserPublicacion" Type="int" />
     <Property Name="idTema_publicacion" Type="int" />
@@ -29,8 +29,8 @@
     </Key>
     <Property Name="idTema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombreDeTema" Type="varchar" MaxLength="50" />
-    <Property Name="fechaTema" Type="date" />
-    <Property Name="fechaCierre" Type="date" />
+    <Property Name="fechaTema" Type="datetime" />
+    <Property Name="fechaCierre" Type="datetime" />
     <Property Name="idUserForo" Type="int" />
   </EntityType>
   <EntityType Name="USUARIOS">

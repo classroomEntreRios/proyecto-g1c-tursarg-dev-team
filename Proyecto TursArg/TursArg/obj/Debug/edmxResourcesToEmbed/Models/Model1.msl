@@ -31,17 +31,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TEMAS_DE_FORO">
-      <EntityTypeMapping TypeName="BDTursArgModel.TEMAS_DE_FORO">
-        <MappingFragment StoreEntitySet="TEMAS_DE_FORO">
-          <ScalarProperty Name="idUserForo" ColumnName="idUserForo" />
-          <ScalarProperty Name="fechaCierre" ColumnName="fechaCierre" />
-          <ScalarProperty Name="fechaTema" ColumnName="fechaTema" />
-          <ScalarProperty Name="nombreDeTema" ColumnName="nombreDeTema" />
-          <ScalarProperty Name="idTema" ColumnName="idTema" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PUBLICACIONES">
       <EntityTypeMapping TypeName="BDTursArgModel.PUBLICACIONES">
         <MappingFragment StoreEntitySet="PUBLICACIONES">
@@ -50,6 +39,17 @@
           <ScalarProperty Name="textoPublicacion" ColumnName="textoPublicacion" />
           <ScalarProperty Name="fechaPublicacion" ColumnName="fechaPublicacion" />
           <ScalarProperty Name="idPublicacion" ColumnName="idPublicacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEMAS_DE_FORO">
+      <EntityTypeMapping TypeName="BDTursArgModel.TEMAS_DE_FORO">
+        <MappingFragment StoreEntitySet="TEMAS_DE_FORO">
+          <ScalarProperty Name="idUserForo" ColumnName="idUserForo" />
+          <ScalarProperty Name="fechaCierre" ColumnName="fechaCierre" />
+          <ScalarProperty Name="fechaTema" ColumnName="fechaTema" />
+          <ScalarProperty Name="nombreDeTema" ColumnName="nombreDeTema" />
+          <ScalarProperty Name="idTema" ColumnName="idTema" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

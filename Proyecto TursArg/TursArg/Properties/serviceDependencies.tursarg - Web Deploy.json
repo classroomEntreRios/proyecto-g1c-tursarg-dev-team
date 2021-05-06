@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/tursargdbserver/databases/BDTursArg",
+      "type": "mssql.azure",
+      "connectionId": "tursargdbserver.database.windows.net",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

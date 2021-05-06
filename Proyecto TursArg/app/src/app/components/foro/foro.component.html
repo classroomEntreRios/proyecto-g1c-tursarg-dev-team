@@ -19,8 +19,8 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Tema</th>
-                    <th scope="col">fecha Inicio</th>
                     <th scope="col">Comenzado por</th>
+                    <th scope="col">fecha Inicio</th>
                     <th scope="col">Replicas</th>
                 </tr>
             </thead>
@@ -28,15 +28,27 @@
 
                 <tr *ngFor="let post of tema_de_foro; index as i">
                     <th scope="row">{{i + 1}}</th>
-
-                    <td><a [routerLink]="['/publicaciones', post.idTema,post.nombreDeTema]" class="nav-link" href="">{{post.nombreDeTema}}</a></td>
-                    <td>{{post.fechaTema}}</td>
+                    <td><a [routerLink]="['/publicaciones', post.idTema,post.nombreDeTema,id]" class="nav-link" href="">{{post.nombreDeTema}}</a></td>
                     <div *ngFor="let user  of usuarios">
+
                         <div *ngIf="user.idUsuario==post.idUserForo">
                             <td>{{user.nombre}} {{user.apellido}}</td>
                         </div>
                     </div>
-                    <td></td>
+
+
+
+                    <td>{{post.fechaTema|date: "dd-MM-yyyy hh:mm:ss"}}</td>
+
+                    <div *ngFor="let publi  of publicaciones">
+
+                    </div>
+
+
+
+
+
+
                 </tr>
 
             </tbody>

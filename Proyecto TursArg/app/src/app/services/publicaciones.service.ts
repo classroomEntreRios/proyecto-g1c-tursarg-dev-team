@@ -26,4 +26,8 @@ ListarPublicaciones(id: number): Observable<Publicaciones> {
   return this.http.post(this.rootURL + '/PUBLICACIONES', formData);
 
 }
+listapublicaciones():Observable<Publicaciones[]> {
+  return this.http.get<Publicaciones[]>(this.rootURL + '/PUBLICACIONES')
+}
+
 }

@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { PublicacionesService } from 'src/app/services/publicaciones.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import swal from 'sweetalert2';
+import { DatePipe } from "@angular/common";
 
 @Component({
   selector: 'app-publicaciones',
@@ -15,8 +16,12 @@ export class PublicacionesComponent implements OnInit {
   Perfil:string;
   id:any;
   TEMA:string;
+  idUser:any;
   publicaciones:any;
   usuarios:any;
+  Nombre: string;
+  Apellido:string;
+  fecha:any;
 
   form:FormGroup=this.formBuilder.group({
     idPublicacion: [0],
@@ -26,11 +31,18 @@ export class PublicacionesComponent implements OnInit {
     idTema_publicacion:[0]
    
   });
-  constructor(private service:PublicacionesService,private serviceuser:UsuariosService ,private _router:ActivatedRoute,private cookieToken: CookieService, private formBuilder:FormBuilder) { 
+  constructor(private date: DatePipe,private service:PublicacionesService,private serviceuser:UsuariosService ,private _router:ActivatedRoute,private cookieToken: CookieService, private formBuilder:FormBuilder) { 
     console.log(this._router.snapshot.paramMap.get('id'));
    
     this.Perfil = this.cookieToken.get('Token');
-  }
+   
+     this.TEMA=this._router.snapshot.paramMap.get('TEMA');
+     this.idUser=this._router.snapshot.paramMap.get('idUser');
+     this.Nombre=this._router.snapshot.paramMap.get('nombre');
+     this.Apellido=this._router.snapshot.paramMap.get('apellido');
+     this.fecha=this._router.snapshot.paramMap.get('fecha');
+ 
+    }
 
   ngOnInit(): void {
     this.ListarPublicaciones();
@@ -38,8 +50,7 @@ export class PublicacionesComponent implements OnInit {
 
   ListarPublicaciones(){
     
-     this.id = this._router.snapshot.paramMap.get('id');
-     this.TEMA=this._router.snapshot.paramMap.get('TEMA');
+    this.id = this._router.snapshot.paramMap.get('id');
     console.log('iddddddddddddddd',this.id)
     this.service.ListarPublicaciones(this.id).subscribe(data => {
       this.publicaciones = data;
@@ -59,7 +70,8 @@ export class PublicacionesComponent implements OnInit {
     if (this.form.invalid){
       this.form.markAllAsTouched
       }
-      this.form.value.idUserForo=this.id;
+      this.form.value.idTema_publicacion=this.id;
+      this.form.value.idUserPublicacion=this.idUser;
       console.log('formularioooooo',this.form)
       this.service.postpublicaciones(this.form.value).subscribe(res => {
         swal.fire('Enhorabuena', 'Comentario enviado', 'success').then(function(){ 

@@ -27,7 +27,7 @@ const routes: Routes =
     { path: 'registerUser', component: RegisterComponent },
     { path: 'modiCiudad', component: ModificarCiudadComponent },
     { path: 'dashboard', component:DashAdminComponent},
-    { path: 'publicaciones/:id/:TEMA', component:PublicacionesComponent},
+    { path: 'publicaciones/:id/:TEMA/:idUser', component:PublicacionesComponent},
     { path: '**', redirectTo:'index'}, 
   ];
 

@@ -30,10 +30,8 @@ C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\Turs
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\roslyn\System.IO.Compression.ZipFile.dll
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\roslyn\System.Net.Http.dll
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\roslyn\System.Net.Sockets.dll
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\roslyn\System.Security.Cryptography.Algorithms.dll
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\roslyn\System.Security.Cryptography.Encoding.dll
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\roslyn\System.Security.Cryptography.Primitives.dll
@@ -50,6 +48,13 @@ C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\Turs
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\roslyn\vbc.rsp
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\roslyn\VBCSCompiler.exe
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Release\TursArg.csprojAssemblyReference.cache
+C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Release\TursArg.csproj.CoreCompileInputs.cache
+C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Release\TursArg.csproj.CopyComplete
+C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Release\TursArg.dll
+C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Release\TursArg.pdb
+C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\roslyn\System.Net.Http.dll
+C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\Antlr3.Runtime.dll
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\EntityFramework.dll
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\EntityFramework.SqlServer.dll
@@ -169,8 +174,3 @@ C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\Turs
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\es\System.Web.WebPages.resources.dll
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Release\TursArg.csprojAssemblyReference.cache
-C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Release\TursArg.csproj.CoreCompileInputs.cache
-C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Release\TursArg.csproj.CopyComplete
-C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Release\TursArg.dll
-C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Release\TursArg.pdb

@@ -2,10 +2,11 @@
 
 <div class="container">
     <div>
-        <h2>Foro TursArg</h2>
+        <H1>Foro TursArg</H1>
     </div>
     <div>
-        <H2>{{TEMA}}</H2>
+        <H3>{{TEMA}}</H3>
+        <h6><strong>Creado por :</strong>{{Nombre}} {{Apellido}} el {{fecha|date: "dd-MMM-yyyy hh:mm:ss"}}</h6>
     </div>
 
 
@@ -33,7 +34,7 @@
 
                 <div *ngFor="let user  of usuarios">
                     <div *ngIf="user.idUsuario==post.idUserPublicacion">
-                        <td>De:{{user.nombre}} {{user.apellido}} - {{post.fechaPublicacion}}</td>
+                        <td>De:{{user.nombre}} {{user.apellido}} - {{post.fechaPublicacion|date: "dd-MM-yyyy hh:mm:ss"}}</td>
 
                     </div>
 

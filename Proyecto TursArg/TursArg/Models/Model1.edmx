@@ -23,7 +23,7 @@
             <PropertyRef Name="idPublicacion" />
           </Key>
           <Property Name="idPublicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fechaPublicacion" Type="date" />
+          <Property Name="fechaPublicacion" Type="datetime" />
           <Property Name="textoPublicacion" Type="text" />
           <Property Name="idUserPublicacion" Type="int" />
           <Property Name="idTema_publicacion" Type="int" />
@@ -34,8 +34,8 @@
           </Key>
           <Property Name="idTema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombreDeTema" Type="varchar" MaxLength="50" />
-          <Property Name="fechaTema" Type="date" />
-          <Property Name="fechaCierre" Type="date" />
+          <Property Name="fechaTema" Type="datetime" />
+          <Property Name="fechaCierre" Type="datetime" />
           <Property Name="idUserForo" Type="int" />
         </EntityType>
         <EntityType Name="USUARIOS">
@@ -81,8 +81,8 @@
         <EntityContainer Name="BDTursArgEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
           <EntitySet Name="CIUDADES" EntityType="BDTursArgModel.CIUDADES" />
-          <EntitySet Name="TEMAS_DE_FORO" EntityType="BDTursArgModel.TEMAS_DE_FORO" />
           <EntitySet Name="PUBLICACIONES" EntityType="BDTursArgModel.PUBLICACIONES" />
+          <EntitySet Name="TEMAS_DE_FORO" EntityType="BDTursArgModel.TEMAS_DE_FORO" />
         </EntityContainer>
         <EntityType Name="CIUDADES">
           <Key>
@@ -97,25 +97,25 @@
           <Property Name="urlfotoCiudad2" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="urlfotoCiudad3" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="PUBLICACIONES">
+          <Key>
+            <PropertyRef Name="idPublicacion" />
+          </Key>
+          <Property Name="idPublicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaPublicacion" Type="DateTime" Precision="3" />
+          <Property Name="textoPublicacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idUserPublicacion" Type="Int32" />
+          <Property Name="idTema_publicacion" Type="Int32" />
+        </EntityType>
         <EntityType Name="TEMAS_DE_FORO">
           <Key>
             <PropertyRef Name="idTema" />
           </Key>
           <Property Name="idTema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombreDeTema" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="fechaTema" Type="DateTime" Precision="0" />
-          <Property Name="fechaCierre" Type="DateTime" Precision="0" />
+          <Property Name="fechaTema" Type="DateTime" Precision="3" />
+          <Property Name="fechaCierre" Type="DateTime" Precision="3" />
           <Property Name="idUserForo" Type="Int32" />
-        </EntityType>
-        <EntityType Name="PUBLICACIONES">
-          <Key>
-            <PropertyRef Name="idPublicacion" />
-          </Key>
-          <Property Name="idPublicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fechaPublicacion" Type="DateTime" Precision="0" />
-          <Property Name="textoPublicacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="idUserPublicacion" Type="Int32" />
-          <Property Name="idTema_publicacion" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -153,17 +153,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TEMAS_DE_FORO">
-            <EntityTypeMapping TypeName="BDTursArgModel.TEMAS_DE_FORO">
-              <MappingFragment StoreEntitySet="TEMAS_DE_FORO">
-                <ScalarProperty Name="idUserForo" ColumnName="idUserForo" />
-                <ScalarProperty Name="fechaCierre" ColumnName="fechaCierre" />
-                <ScalarProperty Name="fechaTema" ColumnName="fechaTema" />
-                <ScalarProperty Name="nombreDeTema" ColumnName="nombreDeTema" />
-                <ScalarProperty Name="idTema" ColumnName="idTema" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PUBLICACIONES">
             <EntityTypeMapping TypeName="BDTursArgModel.PUBLICACIONES">
               <MappingFragment StoreEntitySet="PUBLICACIONES">
@@ -172,6 +161,17 @@
                 <ScalarProperty Name="textoPublicacion" ColumnName="textoPublicacion" />
                 <ScalarProperty Name="fechaPublicacion" ColumnName="fechaPublicacion" />
                 <ScalarProperty Name="idPublicacion" ColumnName="idPublicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEMAS_DE_FORO">
+            <EntityTypeMapping TypeName="BDTursArgModel.TEMAS_DE_FORO">
+              <MappingFragment StoreEntitySet="TEMAS_DE_FORO">
+                <ScalarProperty Name="idUserForo" ColumnName="idUserForo" />
+                <ScalarProperty Name="fechaCierre" ColumnName="fechaCierre" />
+                <ScalarProperty Name="fechaTema" ColumnName="fechaTema" />
+                <ScalarProperty Name="nombreDeTema" ColumnName="nombreDeTema" />
+                <ScalarProperty Name="idTema" ColumnName="idTema" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

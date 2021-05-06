@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators}from '@angular/forms'
 import { CookieService } from 'ngx-cookie-service';
 import { TemaDeForo } from 'src/app/models/tema-de-foro.model';
 import { Usuarios } from 'src/app/models/usuarios.model';
+import { PublicacionesService } from 'src/app/services/publicaciones.service';
 import{TemaDeForoService} from 'src/app/services/tema-de-foro.service'
 import{UsuariosService}from  'src/app/services/usuarios.service'
 import swal from 'sweetalert2';
@@ -18,6 +19,9 @@ export class ForoComponent implements OnInit {
    id:number;
    Perfil:string;
    datosUsuario: Usuarios;
+   publicaciones:any[];
+   public replica=0;
+
  form:FormGroup=this.formBuilder.group({
     idTema: [0],
     nombreDeTema: ['',Validators.required],
@@ -27,9 +31,12 @@ export class ForoComponent implements OnInit {
   });
   
 
+sumar(){
+ this.replica=this.replica+1
+  console.log('suma',this.replica)
+}
 
-
-  constructor(private formBuilder:FormBuilder,private service:TemaDeForoService, private serviceuser:UsuariosService,private cookieToken: CookieService) {
+  constructor(private servicepublicaciones:PublicacionesService ,private formBuilder:FormBuilder,private service:TemaDeForoService, private serviceuser:UsuariosService,private cookieToken: CookieService) {
     this.Perfil = this.cookieToken.get('Token');
     
     }
@@ -61,10 +68,18 @@ export class ForoComponent implements OnInit {
     /////id de usuario con el id de tema de foro para colocar el nombre y apellido //////   
       this.serviceuser.listarusuarios().subscribe(data1 =>{
         this.usuarios=data1;
+        //// LISTA LAS PUBLICACIONES PARA CONTAR CUANTAS PUBLICACIONES TIENE CADA TEMA /////
+        this.servicepublicaciones.listapublicaciones().subscribe(data2 =>{
+          this.publicaciones=data2;
+         
+                   
+        })
       })
     })
       
   }
+
+
   resetForm(form) {
     if (form != null)
     this.form.reset();

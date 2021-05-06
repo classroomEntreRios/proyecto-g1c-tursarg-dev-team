@@ -3,6 +3,6 @@ export class Publicaciones {
     fechaPublicacion:Date;
     textoPublicacion:string;
     idUserPublicacion:number;
-    //idTema_publicacion:number;
+    idTema_publicacion:number;
     
 }
