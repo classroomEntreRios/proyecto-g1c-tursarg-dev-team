@@ -33,6 +33,7 @@ import { CodpostUnicoDirective } from './validations/codpost-unico.directive';
 import { TemaDeForoService } from './services/tema-de-foro.service';
 import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
 import { ConsultasDashboardComponent } from './components/consultas-dashboard/consultas-dashboard.component';
+import { TemplateConstruccionComponent } from './components/template-construccion/template-construccion.component';
 
 
 
@@ -62,6 +63,7 @@ import { ConsultasDashboardComponent } from './components/consultas-dashboard/co
     CodpostUnicoDirective,
     PublicacionesComponent,
     ConsultasDashboardComponent,
+    TemplateConstruccionComponent,
 
 
   ],

@@ -1,3 +1,4 @@
+import { TemplateConstruccionComponent } from './components/template-construccion/template-construccion.component';
 import { CiudadesComponent } from './components/ciudades/ciudades.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ForoComponent } from './components/foro/foro.component';
@@ -29,7 +30,10 @@ const routes: Routes =
     { path: 'modiCiudad', component: ModificarCiudadComponent },
     { path: 'dashboard', component: DashAdminComponent },
     { path: 'ConsultasDash', component: ConsultasDashboardComponent },
+    { path: 'enConstruccion', component: TemplateConstruccionComponent },
+
     { path: 'publicaciones/:id/:TEMA', component: PublicacionesComponent },
+
     { path: '**', redirectTo: 'index' },
   ];
 
