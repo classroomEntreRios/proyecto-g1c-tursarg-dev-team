@@ -10,14 +10,16 @@ import { Login } from '../models/login.model';
 })
 export class LoginService {
 
+  formData: Login;
+
   readonly rootURL = 'https://localhost:44332/api'
 
   constructor(private url: UrlService, private http: HttpClient) { }
 
   urlLogin: any;
 
-  autenticarUsuario(datos: Usuarios) {
-    return this.http.post(this.url.urlLogin, datos);
+  autenticarUsuario(datos: Usuarios, formData: Login) {
+    return this.http.post(this.url.urlLogin, formData);
   }
 
   obtenerUsuario(email: string) {

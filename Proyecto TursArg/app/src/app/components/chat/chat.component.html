@@ -39,11 +39,28 @@
                             [(ngModel)]="service.formData.Nombre_Apellido" class="form-control" required autofocus
                             type="text">
                     </p>
+
+                    <div *ngIf="Nombre_Apellido.invalid && (Nombre_Apellido.dirty || Nombre_Apellido.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="Nombre_Apellido.invalid">
+                            Introduzca un nombre
+                        </div>
+                    </div>
                     <p>
                         <label class="fas fa-envelope" style="color: black;"> Correo electronico</label>
                         <input name="email" #email="ngModel" [(ngModel)]="service.formData.email" class="form-control"
-                            required autofocus type="text">
+                            required autofocus Email type="text">
                     </p>
+
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                        <div *ngIf="email.invalid">
+                            Introduzca un email
+                        </div>
+                        <div *ngIf="email.errors?.Email">
+                            El E-mail es invalido "example@gmail.com"
+                        </div>
+
+                    </div>
                     <!-- <p>
                         <label class="fas fa-phone" style="color: black;"> Telefono</label>
                         <input name="telefono" #telefono="ngModel" [(ngModel)]="service.formData.telefono"
@@ -55,11 +72,22 @@
                             [(ngModel)]="service.formData.motivoConsulta" class="form-control" required autofocus
                             type="text">
                     </p>
+                    <div *ngIf="motivoConsulta.invalid && (motivoConsulta.dirty || motivoConsulta.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="motivoConsulta.invalid">
+                            Introduzca un motivo
+                        </div>
+                    </div>
                     <p class="block">
-                        <label class="fas fa-edit" style="color: black;"> Mensaje</label>
+                        <label class="fas fa-edit" style="color: black;"> ¿Cual es su consulta?</label>
                         <input type="text" name="Mensaje" #Mensaje="ngModel" [(ngModel)]="service.formData.Mensaje"
                             class="form-control" required autofocus rows="3">
                     </p>
+                    <div *ngIf="Mensaje.invalid && (Mensaje.dirty || Mensaje.touched)" class="alert alert-danger">
+                        <div *ngIf="Mensaje.invalid">
+                            Introduzca una consulta
+                        </div>
+                    </div>
                     <p style="font-weight: 550; color: white  ;" class="block">
                         <button [disabled]="form.invalid " type="submit" style="font-weight: 550;">
                             Enviar

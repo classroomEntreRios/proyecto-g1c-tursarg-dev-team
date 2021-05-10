@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validator, FormsModule, NgForm, FormBuilder, Va
 import { Login } from 'src/app/models/login.model';
 import swal from 'sweetalert2'
 import { CookieService } from 'ngx-cookie-service'
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 
 @Component({
@@ -16,9 +17,10 @@ import { CookieService } from 'ngx-cookie-service'
 export class LoginComponent implements OnInit {
 
   token: string;
+  service: any;
 
 
-  constructor(private LoginService: LoginService, private router: Router, private formBuilder: FormBuilder, private cookieToken: CookieService) { };
+  constructor(public LoginService: LoginService, private router: Router, private formBuilder: FormBuilder, private cookieToken: CookieService) { };
 
 
   formLogin: FormGroup = this.formBuilder.group({
@@ -30,11 +32,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
   }
-  // cerrarsession() {
-  // this.cookieToken.delete('Token')
-  //this.router.navigate(['/']);
 
-  // }
+
 
   onSubmit() {
     if (this.formLogin.invalid) {
